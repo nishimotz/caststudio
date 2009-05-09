@@ -50,6 +50,7 @@ public class MediaUtil {
 		List<Item> rssItems = null;
 //		String chRpcUrl;
 		try {
+			logger.info("Rss(" + rssloc + ")");
 			Rss rss = new Rss(rssloc);
 			logger.info("channel: " + rss.getChannel_Title()); 
 			Channel ch = rss.getChannel();
