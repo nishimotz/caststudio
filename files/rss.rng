@@ -1,0 +1,96 @@
+<!-- $Id: rss.rng,v 1.1 2009/04/10 09:23:14 nishi Exp $ -->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:java="http://www.relaxer.org/xmlns/relaxer/java"
+         xmlns:relaxer="http://www.relaxer.org/xmlns/relaxer"
+         xmlns:sql="http://www.relaxer.org/xmlns/relaxer/sql"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+         ns="">
+  <start>
+    <ref name="rss"/>
+  </start>
+  
+  <define name="rss">
+    <element name="rss">
+      <attribute name="version">
+        <data type="float"/>
+      </attribute>
+      <ref name="channel"/>
+    </element>
+  </define>
+  
+  <define name="channel">
+    <element name="channel">
+      <element name="title">
+        <data type="token"/>
+      </element>
+      <element name="link">
+        <data type="token"/>
+      </element>
+	  <element name="description">
+	    <data type="token"/>
+	  </element>
+      <element name="language">
+        <data type="token"/>
+      </element>
+      <element name="pubDate">
+        <data type="token"/>
+      </element>
+      <element name="category">
+        <data type="token"/>
+      </element>
+      <element name="docs">
+        <data type="token"/>
+      </element>
+      <element name="ttl">
+        <data type="token"/>
+      </element>
+      <zeroOrMore>
+        <ref name="item"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  
+  <define name="item">
+    <element name="item">
+      <zeroOrMore>
+        <choice>
+	      <element name="title">
+	        <data type="token"/>
+	      </element>
+	      <element name="link">
+	        <data type="token"/>
+	      </element>
+	      <element name="pubDate">
+	        <data type="token"/>
+	      </element>
+	      <element name="author">
+	        <data type="token"/>
+	      </element>
+	      <element name="category">
+	        <data type="token"/>
+	      </element>
+		  <element name="description">
+		    <data type="token"/>
+		  </element>
+	      <ref name="enclosure"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="enclosure">
+    <element name="enclosure">
+      <attribute name="length">
+        <data type="float"/>
+      </attribute>
+      <attribute name="type">
+        <data type="token"/>
+      </attribute>
+      <attribute name="url">
+        <data type="token"/>
+      </attribute>
+    </element>
+  </define>
+
+</grammar>

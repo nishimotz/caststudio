@@ -1,0 +1,32 @@
+<!--
+# $Id: build.xml,v 1.1 2009/04/10 09:23:14 nishi Exp $
+  -->
+<project name="caststudio" default="jar">
+  <property name="src" value="./src"/>
+  <property name="classes" value="./bin"/>
+  <target name="mkdir">
+   <mkdir dir="${classes}"/>
+  </target>
+  <target name="compile">
+    <javac srcdir="${src}" fork="true" destdir="${classes}">
+      <compilerarg value="-Xlint:deprecation -Xlint:unchecked" />
+<!--
+   	  <classpath>
+        <pathelement location="C:\Program Files\JMF2.1.1e\lib\jmf.jar"/>
+   	  	<pathelement location="C:\Program Files\Java\jdk1.6.0_05\sample\jnlp\servlet\jnlp.jar"/>
+        <pathelement location="C:\eclipse\plugins\org.junit4_4.3.1\junit.jar"/>
+      </classpath>
+-->
+  	</javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar jarfile="caststudio.jar" manifest="caststudio.mf">
+      <fileset dir="${classes}" includes="*.class **/*.class"/>
+      <fileset dir="${src}" includes="**/*.properties"/>
+    </jar>
+ 	<signjar verbose="true" jar="caststudio.jar" 
+     keystore="files/myKeystore" alias="myself" storepass="mmmpass"/>
+  </target>
+	
+</project>

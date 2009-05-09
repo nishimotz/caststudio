@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+"
+ codebase="http://radiofly.to/mmm/java"
+ href="caststudio.jnlp">
+ <information>
+  <title>CastStudio</title>
+  <vendor>nishimotz</vendor>
+ </information>
+ <resources>
+  <j2se version="1.5+"/>
+  <jar href="caststudio.jar" main="true" download="eager" />
+ </resources>
+ <application-desc main-class="com.nishimotz.mmm.CastStudio">
+  <argument>-g</argument> <argument>1</argument>
+  <argument>-r</argument> <argument>http://radiofly.to/mmm/irusu/rss-irusu.php</argument>
+ </application-desc>
+ <security>
+  <all-permissions/>
+ </security>
+</jnlp>
+
