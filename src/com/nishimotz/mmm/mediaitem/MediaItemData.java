@@ -4,7 +4,6 @@
 package com.nishimotz.mmm.mediaitem;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.nishimotz.mmm.CastStudio;
-import com.nishimotz.util.Tools;
 import com.nishimotz.util.Util;
 
 public class MediaItemData {
@@ -42,7 +40,7 @@ public class MediaItemData {
 	private boolean shapeDataLoaded = false;
 	
 	private String fetchedFilePath;
-	private boolean isFetched = false;
+	private boolean isFetched = true; // if JavaSound is used, always fetch 
 	
 //	public MediaItemData(boolean isSticker) {
 //		this.isSticker = isSticker;
@@ -223,43 +221,41 @@ public class MediaItemData {
 		shapeLocation = u;
 	}
 
-	public void doFetch() {
-		String ext = ".wav";
-		if (location.endsWith(".mp3")) {
-			ext = ".mp3";
-		}
-		if (location.startsWith("http:")) {
-			String localfile = Tools.mktemp(ext);
-			Tools.saveUrlAsBinary(location, localfile);
-			localfile = localfile.replace('\\', '/'); // Win32
-			fetchedFilePath = "file:" + localfile;
-			isFetched = true;
-		} else {
-			fetchedFilePath = location;
-			isFetched = true;
-		}
-		
-	}
+//	public void doFetch() {
+//		String ext = ".wav";
+//		if (location.endsWith(".mp3")) {
+//			ext = ".mp3";
+//		}
+//		if (location.startsWith("http:")) {
+//			String localfile = Tools.mktemp(ext);
+//			Tools.saveUrlAsBinary(location, localfile);
+//			localfile = localfile.replace('\\', '/'); // Win32
+//			fetchedFilePath = "file:" + localfile;
+//			isFetched = true;
+//		} else {
+//			fetchedFilePath = location;
+//			isFetched = true;
+//		}
+//	}
 	
 	public boolean isFetched() {
 		return isFetched;
 	}
 	
-	public String getFetchedFilePath() {
-		return fetchedFilePath;
-	}
+//	public String getFetchedFilePath() {
+//		return fetchedFilePath;
+//	}
 
-	public void deleteFetchedFile() {
-		isFetched = false;
-		String filePath = fetchedFilePath.replaceFirst("file:", "");
-		File file = new File(filePath);
-		boolean success = file.delete();
-		if (success) {
-			logger.info("fetched file deleted: " + filePath);
-		} else {
-			logger.severe("fetched file delete failed: " + filePath);
-		}
-	}
-
+//	public void deleteFetchedFile() {
+//		isFetched = false;
+//		String filePath = fetchedFilePath.replaceFirst("file:", "");
+//		File file = new File(filePath);
+//		boolean success = file.delete();
+//		if (success) {
+//			logger.info("fetched file deleted: " + filePath);
+//		} else {
+//			logger.severe("fetched file delete failed: " + filePath);
+//		}
+//	}
 
 }
