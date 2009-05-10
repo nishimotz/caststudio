@@ -1,4 +1,6 @@
 /*
+ * O'ra-be CastStudio
+ * (c) 2006-2009 Takuya Nishimoto
  */
 package com.nishimotz.mmm;
 
@@ -35,9 +37,8 @@ public class CastStudio {
 
 	/**
 	 * @param args
-     * [session] -s 999 -t 999 -u 201 -v 201
-	 * s:station t:stpass u:userid v:userpass
-     * 
+     * [session] -s 999 -u 201 -e 123456 -r holdStationRSS
+	 * s:station u:userid e:episode_id
      * [loggingMode] -g 1 
 	 */
 	public static void main(String[] args) {
@@ -60,28 +61,29 @@ public class CastStudio {
 	private enum SOURCE_MODE {LocalDirectory, LocalRSS, HoldStationRSS, Unknown}
 	private SOURCE_MODE sourceMode = SOURCE_MODE.Unknown;
 	
-	private String localDirectory = "c:/recordings/2005-11/koshira051113";
+	private String localDirectory = "c:/recordings/2005-11/xxx051113";
 	private String localRSS = "files.xml";
-	private String holdStationRSS = "http://radiofly.to/mmm/uploader/rss.php";
+	private String holdStationRSS = "http://server/caststudio/index.rss";
 	private String station = "11111";
 	private String uid = "101";
+	private String episode_id = "996332877";
 //	private int rssmode = 0;
 	
 	private int loggingMode = 0;
 	
-	// GUI でユーザに表示する文字列
+	// showed with GUI
 	private String sessionInfo = "";
 	
-	// 前回の dragged イベントにおけるマウス座標
+	// mouse position of previous dragged event
 	private int prevDragX = NOT_A_POS;
 	private int prevDragY = NOT_A_POS;
 	
-	// 現在ドラッグ中のアイテム
+	// item dragging currently
 	private MediaItem draggingMediaItem = null;
-	// draggingMediaItem の初期位置（アンドゥ用）
+	// initial position of draggingMediaItem (for undo)
 	private int originalPosX = NOT_A_POS;
 	private int originalPosY = NOT_A_POS;
-	// draggingMediaItem の初期位置での State
+	// state at initial position of draggingMediaItem
 	public ITEM_STATUS originalItemStatus;
 
 	private Queue<CastStudioEvent> eventQueue = new LinkedList<CastStudioEvent>();
@@ -132,15 +134,16 @@ public class CastStudio {
 		holdStationRSS    = Messages.getString("HoldStationRSS", defaultRSS);
 		station = Messages.getString("station");
 		uid     = Messages.getString("uid");
+		episode_id     = Messages.getString("episode_id");
 //		rssmode = Messages.getAsInteger("rssmode", 0);
 	}
 	
 	
-	//
-	// property の値を main の引数で上書きする
-	//
+	/*
+	 * override property values by args
+	 */
 	public void parseArgs(String[] args) {
-		Getopt g = new Getopt("", args, "g:r:s:u:");
+		Getopt g = new Getopt("", args, "g:r:s:u:e:");
 		int c;
 		while ((c = g.getopt()) != -1){
 			switch (c)	{
@@ -155,6 +158,9 @@ public class CastStudio {
 				break;
 			case 'u':
 				uid = g.getOptarg();
+				break;
+			case 'e':
+				episode_id = g.getOptarg();
 				break;
 			}
 		}
@@ -171,11 +177,13 @@ public class CastStudio {
 	private String getHoldStationLocation() {
 		return holdStationRSS
 			+ "?station=" + station 
+			+ "&episode_id=" + episode_id 
 		    + "&uid=" + uid;
 	}
 	
 	private String getHoldStationInfo() {
 		return "station=" + station 
+			+ " episode_id=" + episode_id
 		    + " uid=" + uid;
 	}
 	
@@ -271,7 +279,7 @@ public class CastStudio {
 		timerTaskThread.start();
 		initSessionInfo();
 		
-		// ここからマウスが有効になる
+		// mouse available from here
 		view.setupEventListener();
 		eventDispatcherThread = new Thread(new EventDispatcher());
 		eventDispatcherThread.start();
@@ -345,7 +353,7 @@ public class CastStudio {
 	}
 	
 	/**
-	 * timerTaskThread.interrupt() によって割り込まれる
+	 * interrupted by timerTaskThread.interrupt()
 	 */
 	class TimerTaskRunner implements Runnable {
 		public void run() {
