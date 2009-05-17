@@ -8,7 +8,7 @@
    <mkdir dir="${classes}"/>
   </target>
   <target name="compile">
-    <javac srcdir="${src}" fork="true" destdir="${classes}">
+    <javac srcdir="${src}" fork="true" destdir="${classes}" encoding="UTF-8">
       <compilerarg value="-Xlint:deprecation -Xlint:unchecked" />
 <!--
    	  <classpath>
