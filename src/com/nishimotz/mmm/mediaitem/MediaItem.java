@@ -28,7 +28,6 @@ public class MediaItem implements IMediaItem {
 	private MediaItemData data;
 	private IMediaItemView stickerItemView;
 	private IMediaItemView voiceItemView;
-//	private IMediaItemView voiceSmallView;
 	private IMediaItemCaster caster;
 
 	private String itemRpcUrl;
@@ -52,10 +51,6 @@ public class MediaItem implements IMediaItem {
 		
 		//caster = new JmfMediaItemCaster();
 		caster = new JavaSoundMediaItemCaster();
-		
-//		stickerItemView = new StickerItemView();
-//		voiceItemView = new MediaItemView();
-//		voiceSmallView = new MediaItemSmallView();
 	}
 	
 	public void setType(TYPE a) {
@@ -67,14 +62,6 @@ public class MediaItem implements IMediaItem {
 	}
 
 	public IMediaItemView getView() {
-//		if (isSticker()) {
-//			return stickerItemView;
-//		} else if (isLoaded()) {
-//			return voiceItemView;
-//		} else if (voiceSmallView.getHoverMode() == FOCUS.INNER) {
-//			return voiceItemView;
-//		}
-//		return voiceSmallView;
 		if (isSticker()) {
 			if (stickerItemView == null) {
 				stickerItemView = new StickerItemView();
@@ -147,8 +134,7 @@ public class MediaItem implements IMediaItem {
 		return caster.syncStart(sysTime);
 	}
 
-	
-	// èIÇÌÇËÇÃïîï™ÇÃåüíÆóp
+	// for monitoring ending part
 	public boolean syncStart(double sysTime, double mstart, double mstop) {
 		systemStartTime = sysTime;
 		return caster.syncStart(sysTime, mstart, mstop);
@@ -177,7 +163,6 @@ public class MediaItem implements IMediaItem {
 	public void setTitle(String s) {
 		data.setTitle(s);
 	}
-
 	
 	public int getPosX() {
 		return getView().getPosX();
@@ -357,20 +342,10 @@ public class MediaItem implements IMediaItem {
 		return newItem;
 	}
 
-	// [HoldStation save_info]
-	//	$t1 = get_request_value("t1", "0"); // mediaStartTime
-	//	$t2 = get_request_value("t2", "-1"); // mediaStopTime
-	//	$px = get_request_value("px", "0"); // posX
-	//	$py = get_request_value("py", "0"); // posY
-	//	$zo = get_request_value("zo", "0"); // zOrder
-	//	$fe = get_request_value("fe", "0"); // fetched
-	//	$cs = get_request_value("cs", ""); // container sheet
-	//	$ga = get_request_value("ga", "0"); // gain as DB
-	
 	public void saveItemInfo(String uid) {
 		String httpUrl = itemRpcUrl 
 			+ "?a=save_info" 
-			+ "&f=" + data.getLocation() 
+			+ "&guid=" + data.getGuid() 
 			+ "&fe=" + (data.isFetched() ? "1" : "0")
 			+ "&c=" + getItemLabel()
 			+ "&t1=" + getMediaStartTime()
@@ -390,15 +365,15 @@ public class MediaItem implements IMediaItem {
 	}
 	
 	
-	public void setupInfo(String rpcUrl, String f, String uid) {
+	public void setupInfo(String rpcUrl, String guid, String uid) {
 		itemRpcUrl = rpcUrl;
 
-		String url_shape = rpcUrl + "?a=get_shape" + "&f=" + f;
+		String url_shape = rpcUrl + "?a=get_shape" + "&guid=" + guid;
 		data.setShapeURL(url_shape);
 
 		String httpUrl = rpcUrl 
 			+ "?a=show_info" 
-			+ "&f=" + f
+			+ "&guid=" + guid
 			+ "&uid=" + uid;
 		try {
 			Element root = Util.getRootElementFromUrl(httpUrl);

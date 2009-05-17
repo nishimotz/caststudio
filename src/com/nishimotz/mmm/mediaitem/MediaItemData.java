@@ -213,4 +213,8 @@ public class MediaItemData {
 	public void setGuid(String itemGuid) {
 		this.itemGuid = itemGuid;
 	}
+
+	public String getGuid() {
+		return this.itemGuid;
+	}
 }

@@ -45,7 +45,6 @@ public class MediaUtil {
 		}
 	}
 	
-	
 	public static void prepareFromRSS(String rssloc, 
 			List<MediaItem> mediaItems, String uid) {
 		List<Item> rssItems = null;
@@ -129,7 +128,7 @@ public class MediaUtil {
 				t1.setCategory(category);
 				t1.setGuid(itemGuid);
 				if (itemLink.length() > 0) {
-					t1.setupInfo(itemLink, url_audio, uid);
+					t1.setupInfo(itemLink, itemGuid, uid);
 				}
 				mediaItems.add(t1);
 			}
@@ -138,9 +137,9 @@ public class MediaUtil {
 	
 
 	/**
-	 * 未読の素材を currMediaItems と newItems に追加する
-	 * 消滅した素材は currMediaItems から除去せず deletedItems に追加する
-	 * TODO: deletedItems の検索を実装する
+	 * add unread items to currMediaItems and newItems
+	 * erased items are not removed from currMediaItems, add to deletedItems
+	 * TODO: search deletedItems
 	 */
 	public static void updateFromRSS(
 			String rssloc, 
@@ -168,13 +167,12 @@ public class MediaUtil {
 		for (Item item : rssItems) {
 			IItemChoice[] contents = item.getContent();
 			String url_audio = ""; 
-//			String url_shape = ""; 
 			String title = ""; 
 			String desc = ""; 
 			String category = "";
 			String author = "";
 			String itemLink = "";
-//			boolean hasInfo = false; 
+			String itemGuid = "";
 			for (IItemChoice c : contents) {
 				if (c instanceof Enclosure) {
 					Enclosure enc = (Enclosure)c;
@@ -185,12 +183,6 @@ public class MediaUtil {
 					if (type.equals("audio/mpeg")) {
 						url_audio = enc.getUrl();
 					}
-//					if (type.equals("application/x-mmm-shape")) {
-//						url_shape = enc.getUrl();
-//					} 
-//					if (type.equals("application/x-mmm-info")) {
-//						hasInfo = true;
-//					} 
 				} else if (c instanceof ItemTitle) {
 					title = ((ItemTitle)c).getContent();
 				} else if (c instanceof ItemCategory) {
@@ -201,29 +193,16 @@ public class MediaUtil {
 					desc = ((ItemDescription)c).getContent();
 				} else if (c instanceof ItemLink) {
 					itemLink = ((ItemLink)c).getContent();
+				} else if (c instanceof ItemGuid) {
+					itemGuid = ((ItemGuid)c).getContent();
 				}
 			}
-			
-//			// カンマで文字列を分割
-//			String[] array = StringUtil.split(category, "-");
-//			String cate;
-//			int label = 0;
-//			if (array.length >= 2) {
-//				cate = array[0];
-//				label = Integer.parseInt(array[1]);
-//			} else {
-//				cate = category;
-//				label = 0;
-//			}
 			
 			logger.info("item: " + author 
 					+ " " + title 
 					+ " " + category 
-//					+ " " + label
 					+ " " + desc
 					+ " " + url_audio);
-//			logger.info("item shape: " + url_shape);
-//			logger.info("item hasInfo: " + hasInfo);
 			
 			if (replaceMode != 0) {
 				url_audio = url_audio.replaceFirst(replaceFrom, replaceTo);
@@ -234,8 +213,7 @@ public class MediaUtil {
 				isSticker = true;
 			}
 			
-			// TODO: 同じURLでもバージョン違いがありうる
-			if (url_audio.length() > 0 && !itemContains(currMediaItems, url_audio)) {
+			if (url_audio.length() > 0 && !itemContains(currMediaItems, itemGuid)) {
 				MediaItem t1 = new MediaItem();
 				t1.setSticker(isSticker);
 				t1.setAudioURL(url_audio);
@@ -244,8 +222,9 @@ public class MediaUtil {
 				t1.setDescription(desc);
 				t1.setCategory(category);
 				t1.setNewItem(true);
+				t1.setGuid(itemGuid);
 				if (itemLink.length() > 0) {
-					t1.setupInfo(itemLink, url_audio, uid);
+					t1.setupInfo(itemLink, itemGuid, uid);
 				}
 				currMediaItems.add(t1);
 				newItems.add(t1);
@@ -266,7 +245,7 @@ public class MediaUtil {
 
 	/**
 	 * TODO: set author
-	 * TODO: 階層ディレクトリのトラバースをする
+	 * TODO: traverse directory
 	 */
 	public static void makeLocalFileList(String location, List<MediaItem> mediaItems) {
 		mediaItems.clear();
@@ -302,6 +281,4 @@ public class MediaUtil {
 			}
 		}
 	}
-
-
 }
