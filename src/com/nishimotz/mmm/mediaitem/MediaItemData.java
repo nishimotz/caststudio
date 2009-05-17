@@ -33,8 +33,6 @@ public class MediaItemData {
 	public static final int itemLabelCount = 5;
 	private int itemLabel = 0;
 	
-//	private boolean isSticker = false;
-	
 	private short[] shapeDataMin;
 	private short[] shapeDataMax;
 	private boolean shapeDataLoaded = false;
@@ -43,10 +41,6 @@ public class MediaItemData {
 	private boolean isFetched = true; // if JavaSound is used, always fetch 
 
 	private String itemGuid = null;
-	
-//	public MediaItemData(boolean isSticker) {
-//		this.isSticker = isSticker;
-//	}
 	
 	public int getItemLabel() {
 		return itemLabel;
@@ -135,10 +129,6 @@ public class MediaItemData {
 		this.category = category;
 	}
 
-//	public boolean isSticker() {
-//		return isSticker;
-//	}
-	
 	public void loadShapeData() {
 		if (shapeDataLoaded) {
 			logger.info("loadShapeData ... already loaded");
@@ -216,23 +206,6 @@ public class MediaItemData {
 		shapeLocation = u;
 	}
 
-//	public void doFetch() {
-//		String ext = ".wav";
-//		if (location.endsWith(".mp3")) {
-//			ext = ".mp3";
-//		}
-//		if (location.startsWith("http:")) {
-//			String localfile = Tools.mktemp(ext);
-//			Tools.saveUrlAsBinary(location, localfile);
-//			localfile = localfile.replace('\\', '/'); // Win32
-//			fetchedFilePath = "file:" + localfile;
-//			isFetched = true;
-//		} else {
-//			fetchedFilePath = location;
-//			isFetched = true;
-//		}
-//	}
-	
 	public boolean isFetched() {
 		return isFetched;
 	}
@@ -240,21 +213,4 @@ public class MediaItemData {
 	public void setGuid(String itemGuid) {
 		this.itemGuid = itemGuid;
 	}
-	
-//	public String getFetchedFilePath() {
-//		return fetchedFilePath;
-//	}
-
-//	public void deleteFetchedFile() {
-//		isFetched = false;
-//		String filePath = fetchedFilePath.replaceFirst("file:", "");
-//		File file = new File(filePath);
-//		boolean success = file.delete();
-//		if (success) {
-//			logger.info("fetched file deleted: " + filePath);
-//		} else {
-//			logger.severe("fetched file delete failed: " + filePath);
-//		}
-//	}
-
 }
