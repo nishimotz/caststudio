@@ -41,6 +41,8 @@ public class MediaItemData {
 	
 	private String fetchedFilePath;
 	private boolean isFetched = true; // if JavaSound is used, always fetch 
+
+	private String itemGuid = null;
 	
 //	public MediaItemData(boolean isSticker) {
 //		this.isSticker = isSticker;
@@ -233,6 +235,10 @@ public class MediaItemData {
 	
 	public boolean isFetched() {
 		return isFetched;
+	}
+
+	public void setGuid(String itemGuid) {
+		this.itemGuid = itemGuid;
 	}
 	
 //	public String getFetchedFilePath() {

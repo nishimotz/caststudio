@@ -23,6 +23,7 @@ import com.nishimotz.rss.Item;
 import com.nishimotz.rss.ItemAuthor;
 import com.nishimotz.rss.ItemCategory;
 import com.nishimotz.rss.ItemDescription;
+import com.nishimotz.rss.ItemGuid;
 import com.nishimotz.rss.ItemLink;
 import com.nishimotz.rss.ItemTitle;
 import com.nishimotz.rss.Rss;
@@ -48,7 +49,6 @@ public class MediaUtil {
 	public static void prepareFromRSS(String rssloc, 
 			List<MediaItem> mediaItems, String uid) {
 		List<Item> rssItems = null;
-//		String chRpcUrl;
 		try {
 			logger.info("Rss() " + rssloc);
 			Rss rss = new Rss(rssloc);
@@ -57,8 +57,6 @@ public class MediaUtil {
 			Channel ch = rss.getChannel();
 			rssItems = Arrays.asList(ch.getItem());
 			logger.info("sizeItem: " + rssItems.size());
-//			chRpcUrl = ch.getLink();
-//			logger.info("chRpcUrl: " + chRpcUrl);
 		} catch (Exception e) {
 			logger.severe("open RSS failed: " + e.toString()); 
 			return;
@@ -73,13 +71,12 @@ public class MediaUtil {
 		for (Item item : rssItems) {
 			IItemChoice[] contents = item.getContent();
 			String url_audio = ""; 
-//			String url_shape = ""; 
 			String title = ""; 
 			String desc = ""; 
 			String category = "";
 			String author = "";
 			String itemLink = "";
-//			boolean hasInfo = false; 
+			String itemGuid = "";
 			for (IItemChoice c : contents) {
 				if (c instanceof Enclosure) {
 					Enclosure enc = (Enclosure)c;
@@ -90,12 +87,6 @@ public class MediaUtil {
 					if (type.equals("audio/mpeg")) {
 						url_audio = enc.getUrl();
 					}
-//					if (type.equals("application/x-mmm-shape")) {
-//						url_shape = enc.getUrl();
-//					} 
-//					if (type.equals("application/x-mmm-info")) {
-//						hasInfo = true;
-//					} 
 				} else if (c instanceof ItemTitle) {
 					title = ((ItemTitle)c).getContent();
 				} else if (c instanceof ItemCategory) {
@@ -106,29 +97,18 @@ public class MediaUtil {
 					desc = ((ItemDescription)c).getContent();
 				} else if (c instanceof ItemLink) {
 					itemLink = ((ItemLink)c).getContent();
+				} else if (c instanceof ItemGuid) {
+					itemGuid = ((ItemGuid)c).getContent();
 				}
 			}
 			
-//			// ƒJƒ“ƒ}‚Å•¶Žš—ñ‚ð•ªŠ„
-//			String[] array = StringUtil.split(category, "-");
-//			String cate;
-//			int label = 0;
-//			if (array.length >= 2) {
-//				cate = array[0];
-//				label = Integer.parseInt(array[1]);
-//			} else {
-//				cate = category;
-//				label = 0;
-//			}
-			
-			logger.info("item: " + author 
+			logger.info("item: " 
+					+ author
+					+ " " + itemGuid
 					+ " " + title 
 					+ " " + category 
-//					+ " " + label
 					+ " " + desc
 					+ " " + url_audio);
-//			logger.info("item shape: " + url_shape);
-//			logger.info("item hasInfo: " + hasInfo);
 			
 			if (replaceMode != 0) {
 				url_audio = url_audio.replaceFirst(replaceFrom, replaceTo);
@@ -147,9 +127,8 @@ public class MediaUtil {
 				t1.setAuthor(author);
 				t1.setDescription(desc);
 				t1.setCategory(category);
-//				t1.setShapeURL(url_shape);
+				t1.setGuid(itemGuid);
 				if (itemLink.length() > 0) {
-//					t1.setItemRpcUrl(itemLink);
 					t1.setupInfo(itemLink, url_audio, uid);
 				}
 				mediaItems.add(t1);

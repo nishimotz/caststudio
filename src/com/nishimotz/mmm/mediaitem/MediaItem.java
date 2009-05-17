@@ -421,4 +421,8 @@ public class MediaItem implements IMediaItem {
 		logger.info("showItemInfo (done) " + httpUrl);
 	}
 
+	public void setGuid(String itemGuid) {
+		data.setGuid(itemGuid);
+	}
+
 }
