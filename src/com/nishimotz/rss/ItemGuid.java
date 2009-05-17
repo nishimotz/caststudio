@@ -33,141 +33,92 @@ import org.w3c.dom.*;
 import org.xml.sax.*;
 
 /**
- * <b>Item</b> is generated from rss.rng by Relaxer.
+ * <b>ItemGuid</b> is generated from rss.rng by Relaxer.
  * This class is derived from:
  * 
  * <!-- for programmer
- * <element name="item">
- *       <zeroOrMore>
- *         <choice>
- * 	      <element name="title">
- * 	        <data type="token"/>
- * 	      </element>
- * 	      <element name="link">
- * 	        <data type="token"/>
- * 	      </element>
- * 	      <element name="pubDate">
- * 	        <data type="token"/>
- * 	      </element>
- * 	      <element name="author">
- * 	        <data type="token"/>
- * 	      </element>
- * 	      <element name="category">
- * 	        <data type="token"/>
- * 	      </element>
- * 		  <element name="description">
- * 		    <data type="token"/>
- * 		  </element>
- *           <element name="guid">
+ * <element name="guid">
  *             <attribute name="isPermaLink">
  *               <data type="token"/>
  *             </attribute>
  *             <data type="token"/>
- *           </element>
- * 	      <ref name="enclosure"/>
- *         </choice>
- *       </zeroOrMore>
- *     </element>-->
+ *           </element>-->
  * <!-- for javadoc -->
- * <pre> &lt;element name="item"&gt;
- *       &lt;zeroOrMore&gt;
- *         &lt;choice&gt;
- * 	      &lt;element name="title"&gt;
- * 	        &lt;data type="token"/&gt;
- * 	      &lt;/element&gt;
- * 	      &lt;element name="link"&gt;
- * 	        &lt;data type="token"/&gt;
- * 	      &lt;/element&gt;
- * 	      &lt;element name="pubDate"&gt;
- * 	        &lt;data type="token"/&gt;
- * 	      &lt;/element&gt;
- * 	      &lt;element name="author"&gt;
- * 	        &lt;data type="token"/&gt;
- * 	      &lt;/element&gt;
- * 	      &lt;element name="category"&gt;
- * 	        &lt;data type="token"/&gt;
- * 	      &lt;/element&gt;
- * 		  &lt;element name="description"&gt;
- * 		    &lt;data type="token"/&gt;
- * 		  &lt;/element&gt;
- *           &lt;element name="guid"&gt;
+ * <pre> &lt;element name="guid"&gt;
  *             &lt;attribute name="isPermaLink"&gt;
  *               &lt;data type="token"/&gt;
  *             &lt;/attribute&gt;
  *             &lt;data type="token"/&gt;
- *           &lt;/element&gt;
- * 	      &lt;ref name="enclosure"/&gt;
- *         &lt;/choice&gt;
- *       &lt;/zeroOrMore&gt;
- *     &lt;/element&gt;</pre>
+ *           &lt;/element&gt;</pre>
  *
  * @version rss.rng (Sun May 17 14:40:26 JST 2009)
  * @author  Relaxer 1.1b (http://www.relaxer.org)
  */
-public class Item implements java.io.Serializable, Cloneable {
-    // List<IItemChoice>
-    private java.util.List content_ = new java.util.ArrayList();
+public class ItemGuid implements java.io.Serializable, Cloneable, IItemChoice {
+    private String content_;
+    private String isPermaLink_;
 
     /**
-     * Creates a <code>Item</code>.
+     * Creates a <code>ItemGuid</code>.
      *
      */
-    public Item() {
+    public ItemGuid() {
+        isPermaLink_ = "";
     }
 
     /**
-     * Creates a <code>Item</code>.
+     * Creates a <code>ItemGuid</code>.
      *
      * @param source
      */
-    public Item(Item source) {
+    public ItemGuid(ItemGuid source) {
         setup(source);
     }
 
     /**
-     * Creates a <code>Item</code> by the Stack <code>stack</code>
+     * Creates a <code>ItemGuid</code> by the Stack <code>stack</code>
      * that contains Elements.
      * This constructor is supposed to be used internally
      * by the Relaxer system.
      *
      * @param stack
      */
-    public Item(RStack stack) {
+    public ItemGuid(RStack stack) {
         setup(stack);
     }
 
     /**
-     * Creates a <code>Item</code> by the Document <code>doc</code>.
+     * Creates a <code>ItemGuid</code> by the Document <code>doc</code>.
      *
      * @param doc
      */
-    public Item(Document doc) {
+    public ItemGuid(Document doc) {
         setup(doc.getDocumentElement());
     }
 
     /**
-     * Creates a <code>Item</code> by the Element <code>element</code>.
+     * Creates a <code>ItemGuid</code> by the Element <code>element</code>.
      *
      * @param element
      */
-    public Item(Element element) {
+    public ItemGuid(Element element) {
         setup(element);
     }
 
     /**
-     * Creates a <code>Item</code> by the File <code>file</code>.
+     * Creates a <code>ItemGuid</code> by the File <code>file</code>.
      *
      * @param file
      * @exception IOException
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(File file) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(File file) throws IOException, SAXException, ParserConfigurationException {
         setup(file);
     }
 
     /**
-     * Creates a <code>Item</code>
+     * Creates a <code>ItemGuid</code>
      * by the String representation of URI <code>uri</code>.
      *
      * @param uri
@@ -175,74 +126,71 @@ public class Item implements java.io.Serializable, Cloneable {
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(String uri) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(String uri) throws IOException, SAXException, ParserConfigurationException {
         setup(uri);
     }
 
     /**
-     * Creates a <code>Item</code> by the URL <code>url</code>.
+     * Creates a <code>ItemGuid</code> by the URL <code>url</code>.
      *
      * @param url
      * @exception IOException
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(URL url) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(URL url) throws IOException, SAXException, ParserConfigurationException {
         setup(url);
     }
 
     /**
-     * Creates a <code>Item</code> by the InputStream <code>in</code>.
+     * Creates a <code>ItemGuid</code> by the InputStream <code>in</code>.
      *
      * @param in
      * @exception IOException
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(InputStream in) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(InputStream in) throws IOException, SAXException, ParserConfigurationException {
         setup(in);
     }
 
     /**
-     * Creates a <code>Item</code> by the InputSource <code>is</code>.
+     * Creates a <code>ItemGuid</code> by the InputSource <code>is</code>.
      *
      * @param is
      * @exception IOException
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(InputSource is) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(InputSource is) throws IOException, SAXException, ParserConfigurationException {
         setup(is);
     }
 
     /**
-     * Creates a <code>Item</code> by the Reader <code>reader</code>.
+     * Creates a <code>ItemGuid</code> by the Reader <code>reader</code>.
      *
      * @param reader
      * @exception IOException
      * @exception SAXException
      * @exception ParserConfigurationException
      */
-    public Item(Reader reader) throws IOException, SAXException, ParserConfigurationException {
+    public ItemGuid(Reader reader) throws IOException, SAXException, ParserConfigurationException {
         setup(reader);
     }
 
     /**
-     * Initializes the <code>Item</code> by the Item <code>source</code>.
+     * Initializes the <code>ItemGuid</code> by the ItemGuid <code>source</code>.
      *
      * @param source
      */
-    public void setup(Item source) {
+    public void setup(ItemGuid source) {
         int size;
-        this.content_.clear();
-        size = source.content_.size();
-        for (int i = 0;i < size;i++) {
-            addContent((IItemChoice)source.getContent(i).clone());
-        }
+        content_ = source.content_;
+        isPermaLink_ = source.isPermaLink_;
     }
 
     /**
-     * Initializes the <code>Item</code> by the Document <code>doc</code>.
+     * Initializes the <code>ItemGuid</code> by the Document <code>doc</code>.
      *
      * @param doc
      */
@@ -251,7 +199,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the Element <code>element</code>.
+     * Initializes the <code>ItemGuid</code> by the Element <code>element</code>.
      *
      * @param element
      */
@@ -260,7 +208,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the Stack <code>stack</code>
+     * Initializes the <code>ItemGuid</code> by the Stack <code>stack</code>
      * that contains Elements.
      * This constructor is supposed to be used internally
      * by the Relaxer system.
@@ -276,35 +224,15 @@ public class Item implements java.io.Serializable, Cloneable {
      */
     private void init(Element element) {
         RStack stack = new RStack(element);
-        content_.clear();
-        while (true) {
-            if (Enclosure.isMatch(stack)) {
-                addContent(new Enclosure(stack));
-            } else if (ItemGuid.isMatch(stack)) {
-                addContent(new ItemGuid(stack));
-            } else if (ItemTitle.isMatch(stack)) {
-                addContent(new ItemTitle(stack));
-            } else if (ItemLink.isMatch(stack)) {
-                addContent(new ItemLink(stack));
-            } else if (ItemPubDate.isMatch(stack)) {
-                addContent(new ItemPubDate(stack));
-            } else if (ItemAuthor.isMatch(stack)) {
-                addContent(new ItemAuthor(stack));
-            } else if (ItemCategory.isMatch(stack)) {
-                addContent(new ItemCategory(stack));
-            } else if (ItemDescription.isMatch(stack)) {
-                addContent(new ItemDescription(stack));
-            } else {
-                break;
-            }
-        }
+        content_ = URelaxer.getElementPropertyAsString(element);
+        isPermaLink_ = URelaxer.getAttributePropertyAsString(element, "isPermaLink");
     }
 
     /**
      * @return Object
      */
     public Object clone() {
-        return (new Item((Item)this));
+        return (new ItemGuid((ItemGuid)this));
     }
 
     /**
@@ -320,18 +248,17 @@ public class Item implements java.io.Serializable, Cloneable {
         } else {
             doc = parent.getOwnerDocument();
         }
-        Element element = doc.createElement("item");
+        Element element = doc.createElement("guid");
+        URelaxer.setElementPropertyByString(element, this.content_);
         int size;
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeElement(element);
+        if (this.isPermaLink_ != null) {
+            URelaxer.setAttributePropertyByString(element, "isPermaLink", this.isPermaLink_);
         }
         parent.appendChild(element);
     }
 
     /**
-     * Initializes the <code>Item</code> by the File <code>file</code>.
+     * Initializes the <code>ItemGuid</code> by the File <code>file</code>.
      *
      * @param file
      * @exception IOException
@@ -343,7 +270,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code>
+     * Initializes the <code>ItemGuid</code>
      * by the String representation of URI <code>uri</code>.
      *
      * @param uri
@@ -356,7 +283,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the URL <code>url</code>.
+     * Initializes the <code>ItemGuid</code> by the URL <code>url</code>.
      *
      * @param url
      * @exception IOException
@@ -368,7 +295,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the InputStream <code>in</code>.
+     * Initializes the <code>ItemGuid</code> by the InputStream <code>in</code>.
      *
      * @param in
      * @exception IOException
@@ -380,7 +307,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the InputSource <code>is</code>.
+     * Initializes the <code>ItemGuid</code> by the InputSource <code>is</code>.
      *
      * @param is
      * @exception IOException
@@ -392,7 +319,7 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Initializes the <code>Item</code> by the Reader <code>reader</code>.
+     * Initializes the <code>ItemGuid</code> by the Reader <code>reader</code>.
      *
      * @param reader
      * @exception IOException
@@ -416,120 +343,39 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
-     * Gets the IItemChoice property <b>content</b>.
+     * Gets the String property <b>content</b>.
      *
-     * @return IItemChoice[]
+     * @return String
      */
-    public IItemChoice[] getContent() {
-        IItemChoice[] array = new IItemChoice[content_.size()];
-        return ((IItemChoice[])content_.toArray(array));
+    public String getContent() {
+        return (content_);
     }
 
     /**
-     * Sets the IItemChoice property <b>content</b>.
+     * Sets the String property <b>content</b>.
      *
      * @param content
      */
-    public void setContent(IItemChoice[] content) {
-        this.content_.clear();
-        for (int i = 0;i < content.length;i++) {
-            addContent(content[i]);
-        }
+    public void setContent(String content) {
+        this.content_ = content;
     }
 
     /**
-     * Sets the IItemChoice property <b>content</b>.
+     * Gets the String property <b>isPermaLink</b>.
      *
-     * @param content
+     * @return String
      */
-    public void setContent(IItemChoice content) {
-        this.content_.clear();
-        addContent(content);
+    public String getIsPermaLink() {
+        return (isPermaLink_);
     }
 
     /**
-     * Adds the IItemChoice property <b>content</b>.
+     * Sets the String property <b>isPermaLink</b>.
      *
-     * @param content
+     * @param isPermaLink
      */
-    public void addContent(IItemChoice content) {
-        this.content_.add(content);
-    }
-
-    /**
-     * Adds the IItemChoice property <b>content</b>.
-     *
-     * @param content
-     */
-    public void addContent(IItemChoice[] content) {
-        for (int i = 0;i < content.length;i++) {
-            addContent(content[i]);
-        }
-    }
-
-    /**
-     * Gets number of the IItemChoice property <b>content</b>.
-     *
-     * @return int
-     */
-    public int sizeContent() {
-        return (content_.size());
-    }
-
-    /**
-     * Gets the IItemChoice property <b>content</b> by index.
-     *
-     * @param index
-     * @return IItemChoice
-     */
-    public IItemChoice getContent(int index) {
-        return ((IItemChoice)content_.get(index));
-    }
-
-    /**
-     * Sets the IItemChoice property <b>content</b> by index.
-     *
-     * @param index
-     * @param content
-     */
-    public void setContent(int index, IItemChoice content) {
-        this.content_.set(index, content);
-    }
-
-    /**
-     * Adds the IItemChoice property <b>content</b> by index.
-     *
-     * @param index
-     * @param content
-     */
-    public void addContent(int index, IItemChoice content) {
-        this.content_.add(index, content);
-    }
-
-    /**
-     * Remove the IItemChoice property <b>content</b> by index.
-     *
-     * @param index
-     */
-    public void removeContent(int index) {
-        this.content_.remove(index);
-    }
-
-    /**
-     * Remove the IItemChoice property <b>content</b> by object.
-     *
-     * @param content
-     */
-    public void removeContent(IItemChoice content) {
-        this.content_.remove(content);
-    }
-
-    /**
-     * Clear the IItemChoice property <b>content</b>.
-     *
-     */
-    public void clearContent() {
-        this.content_.clear();
+    public void setIsPermaLink(String isPermaLink) {
+        this.isPermaLink_ = isPermaLink;
     }
 
     /**
@@ -550,19 +396,15 @@ public class Item implements java.io.Serializable, Cloneable {
      */
     public void makeTextElement(StringBuffer buffer) {
         int size;
-        buffer.append("<item");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextAttribute(buffer);
+        buffer.append("<guid");
+        if (isPermaLink_ != null) {
+            buffer.append(" isPermaLink=\"");
+            buffer.append(URelaxer.escapeAttrQuot(URelaxer.getString(getIsPermaLink())));
+            buffer.append("\"");
         }
         buffer.append(">");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextElement(buffer);
-        }
-        buffer.append("</item>");
+        buffer.append(URelaxer.escapeCharData(URelaxer.getString(getContent())));
+        buffer.append("</guid>");
     }
 
     /**
@@ -573,19 +415,15 @@ public class Item implements java.io.Serializable, Cloneable {
      */
     public void makeTextElement(Writer buffer) throws IOException {
         int size;
-        buffer.write("<item");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextAttribute(buffer);
+        buffer.write("<guid");
+        if (isPermaLink_ != null) {
+            buffer.write(" isPermaLink=\"");
+            buffer.write(URelaxer.escapeAttrQuot(URelaxer.getString(getIsPermaLink())));
+            buffer.write("\"");
         }
         buffer.write(">");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextElement(buffer);
-        }
-        buffer.write("</item>");
+        buffer.write(URelaxer.escapeCharData(URelaxer.getString(getContent())));
+        buffer.write("</guid>");
     }
 
     /**
@@ -595,19 +433,15 @@ public class Item implements java.io.Serializable, Cloneable {
      */
     public void makeTextElement(PrintWriter buffer) {
         int size;
-        buffer.print("<item");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextAttribute(buffer);
+        buffer.print("<guid");
+        if (isPermaLink_ != null) {
+            buffer.print(" isPermaLink=\"");
+            buffer.print(URelaxer.escapeAttrQuot(URelaxer.getString(getIsPermaLink())));
+            buffer.print("\"");
         }
         buffer.print(">");
-        size = this.content_.size();
-        for (int i = 0;i < size;i++) {
-            IItemChoice value = (IItemChoice)this.content_.get(i);
-            value.makeTextElement(buffer);
-        }
-        buffer.print("</item>");
+        buffer.print(URelaxer.escapeCharData(URelaxer.getString(getContent())));
+        buffer.print("</guid>");
     }
 
     /**
@@ -636,6 +470,42 @@ public class Item implements java.io.Serializable, Cloneable {
     }
 
     /**
+     * Gets the property value as String.
+     *
+     * @return String
+     */
+    public String getContentAsString() {
+        return (URelaxer.getString(getContent()));
+    }
+
+    /**
+     * Gets the property value as String.
+     *
+     * @return String
+     */
+    public String getIsPermaLinkAsString() {
+        return (URelaxer.getString(getIsPermaLink()));
+    }
+
+    /**
+     * Sets the property value by String.
+     *
+     * @param string
+     */
+    public void setContentByString(String string) {
+        setContent(string);
+    }
+
+    /**
+     * Sets the property value by String.
+     *
+     * @param string
+     */
+    public void setIsPermaLinkByString(String string) {
+        setIsPermaLink(string);
+    }
+
+    /**
      * Returns a String representation of this object.
      * While this method informs as XML format representaion, 
      *  it's purpose is just information, not making 
@@ -653,39 +523,22 @@ public class Item implements java.io.Serializable, Cloneable {
 
     /**
      * Tests if a Element <code>element</code> is valid
-     * for the <code>Item</code>.
+     * for the <code>ItemGuid</code>.
      *
      * @param element
      * @return boolean
      */
     public static boolean isMatch(Element element) {
-        if (!URelaxer.isTargetElement(element, "item")) {
+        if (!URelaxer.isTargetElement(element, "guid")) {
             return (false);
         }
         RStack target = new RStack(element);
         boolean $match$ = false;
         Element child;
-        while (true) {
-            if (Enclosure.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemGuid.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemTitle.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemLink.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemPubDate.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemAuthor.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemCategory.isMatchHungry(target)) {
-                $match$ = true;
-            } else if (ItemDescription.isMatchHungry(target)) {
-                $match$ = true;
-            } else {
-                break;
-            }
+        if (!URelaxer.hasAttributeHungry(target, "isPermaLink")) {
+            return (false);
         }
+        $match$ = true;
         if (!target.isEmptyElement()) {
             return (false);
         }
@@ -694,7 +547,7 @@ public class Item implements java.io.Serializable, Cloneable {
 
     /**
      * Tests if elements contained in a Stack <code>stack</code>
-     * is valid for the <code>Item</code>.
+     * is valid for the <code>ItemGuid</code>.
      * This mehtod is supposed to be used internally
      * by the Relaxer system.
      *
@@ -711,7 +564,7 @@ public class Item implements java.io.Serializable, Cloneable {
 
     /**
      * Tests if elements contained in a Stack <code>stack</code>
-     * is valid for the <code>Item</code>.
+     * is valid for the <code>ItemGuid</code>.
      * This method consumes the stack contents during matching operation.
      * This mehtod is supposed to be used internally
      * by the Relaxer system.

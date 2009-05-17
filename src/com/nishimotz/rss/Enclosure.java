@@ -61,7 +61,7 @@ import org.xml.sax.*;
  *       &lt;/attribute&gt;
  *     &lt;/element&gt;</pre>
  *
- * @version rss.rng (Sat Jan 21 16:05:54 JST 2006)
+ * @version rss.rng (Sun May 17 14:40:26 JST 2009)
  * @author  Relaxer 1.1b (http://www.relaxer.org)
  */
 public class Enclosure implements java.io.Serializable, Cloneable, IItemChoice {

@@ -36,7 +36,7 @@ import org.w3c.dom.*;
  * UJAXP
  *
  * @since   Feb. 20, 2000
- * @version Jul. 10, 2003
+ * @version Jan. 15, 2007
  * @author  ASAMI, Tomoharu (asami@relaxer.org)
  */
 public final class UJAXP {
@@ -818,6 +818,44 @@ public final class UJAXP {
 	}
 	return (isMatchDataComplex(data, typeExpr));
     }
+
+    public static boolean isMatchDataComplexAttr(
+	Element element,
+        String nsUri,
+	String attrName,
+	String typeExpr
+    ) {
+	String data = getAttribute_(element, nsUri, attrName);
+	if (data == null) {
+	    return (false);
+	}
+	return (isMatchDataComplex(data, typeExpr));
+    }
+
+    private static String getAttribute_(
+	Element element,
+	String namespaceURI,
+	String attrName
+    ) {
+	Attr attr = getAttributeNode_(element, namespaceURI, attrName);
+	if (attr == null) {
+	    return (null);
+	}
+	return (attr.getValue());
+    }
+
+    private static Attr getAttributeNode_(
+        Element element,
+        String namespaceURI,
+        String attrName
+    ) {
+        if (namespaceURI != null && !"".equals(namespaceURI)) {
+            return (element.getAttributeNodeNS(namespaceURI, attrName));
+        } else{
+            return (element.getAttributeNode(attrName));
+        }
+    }
+
 
     public static boolean isMatchDataComplexElement(
 	Element element,
