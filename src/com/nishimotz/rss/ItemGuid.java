@@ -38,20 +38,24 @@ import org.xml.sax.*;
  * 
  * <!-- for programmer
  * <element name="guid">
- *             <attribute name="isPermaLink">
- *               <data type="token"/>
- *             </attribute>
+ *             <optional>
+ *               <attribute name="isPermaLink">
+ *                 <data type="token"/>
+ *               </attribute>
+ *             </optional>
  *             <data type="token"/>
  *           </element>-->
  * <!-- for javadoc -->
  * <pre> &lt;element name="guid"&gt;
- *             &lt;attribute name="isPermaLink"&gt;
- *               &lt;data type="token"/&gt;
- *             &lt;/attribute&gt;
+ *             &lt;optional&gt;
+ *               &lt;attribute name="isPermaLink"&gt;
+ *                 &lt;data type="token"/&gt;
+ *               &lt;/attribute&gt;
+ *             &lt;/optional&gt;
  *             &lt;data type="token"/&gt;
  *           &lt;/element&gt;</pre>
  *
- * @version rss.rng (Sun May 17 14:40:26 JST 2009)
+ * @version rss.rng (Sun May 17 15:22:04 JST 2009)
  * @author  Relaxer 1.1b (http://www.relaxer.org)
  */
 public class ItemGuid implements java.io.Serializable, Cloneable, IItemChoice {
@@ -63,7 +67,6 @@ public class ItemGuid implements java.io.Serializable, Cloneable, IItemChoice {
      *
      */
     public ItemGuid() {
-        isPermaLink_ = "";
     }
 
     /**
@@ -535,10 +538,6 @@ public class ItemGuid implements java.io.Serializable, Cloneable, IItemChoice {
         RStack target = new RStack(element);
         boolean $match$ = false;
         Element child;
-        if (!URelaxer.hasAttributeHungry(target, "isPermaLink")) {
-            return (false);
-        }
-        $match$ = true;
         if (!target.isEmptyElement()) {
             return (false);
         }

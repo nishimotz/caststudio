@@ -74,9 +74,11 @@
 		    <data type="token"/>
 		  </element>
           <element name="guid">
-            <attribute name="isPermaLink">
-              <data type="token"/>
-            </attribute>
+            <optional>
+              <attribute name="isPermaLink">
+                <data type="token"/>
+              </attribute>
+            </optional>
             <data type="token"/>
           </element>
 	      <ref name="enclosure"/>

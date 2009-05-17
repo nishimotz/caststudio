@@ -59,9 +59,11 @@ import org.xml.sax.*;
  * 		    <data type="token"/>
  * 		  </element>
  *           <element name="guid">
- *             <attribute name="isPermaLink">
- *               <data type="token"/>
- *             </attribute>
+ *             <optional>
+ *               <attribute name="isPermaLink">
+ *                 <data type="token"/>
+ *               </attribute>
+ *             </optional>
  *             <data type="token"/>
  *           </element>
  * 	      <ref name="enclosure"/>
@@ -91,9 +93,11 @@ import org.xml.sax.*;
  * 		    &lt;data type="token"/&gt;
  * 		  &lt;/element&gt;
  *           &lt;element name="guid"&gt;
- *             &lt;attribute name="isPermaLink"&gt;
- *               &lt;data type="token"/&gt;
- *             &lt;/attribute&gt;
+ *             &lt;optional&gt;
+ *               &lt;attribute name="isPermaLink"&gt;
+ *                 &lt;data type="token"/&gt;
+ *               &lt;/attribute&gt;
+ *             &lt;/optional&gt;
  *             &lt;data type="token"/&gt;
  *           &lt;/element&gt;
  * 	      &lt;ref name="enclosure"/&gt;
@@ -101,7 +105,7 @@ import org.xml.sax.*;
  *       &lt;/zeroOrMore&gt;
  *     &lt;/element&gt;</pre>
  *
- * @version rss.rng (Sun May 17 14:40:26 JST 2009)
+ * @version rss.rng (Sun May 17 15:22:04 JST 2009)
  * @author  Relaxer 1.1b (http://www.relaxer.org)
  */
 public class Item implements java.io.Serializable, Cloneable {

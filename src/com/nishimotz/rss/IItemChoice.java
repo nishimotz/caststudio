@@ -41,7 +41,7 @@ import org.xml.sax.SAXException;
  * <b>IItemChoice</b> is generated from rss.rng by Relaxer.
  * Concrete classes of the interface are Enclosure, ItemGuid, ItemTitle, ItemLink, ItemPubDate, ItemAuthor, ItemCategory and ItemDescription.
  *
- * @version rss.rng (Sun May 17 14:40:26 JST 2009)
+ * @version rss.rng (Sun May 17 15:22:04 JST 2009)
  * @author  Relaxer 1.1b (http://www.relaxer.org)
  */
 public interface IItemChoice {

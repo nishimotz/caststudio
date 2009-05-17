@@ -176,14 +176,14 @@ public class CastStudio {
 	
 	private String getHoldStationLocation() {
 		return holdStationRSS
-			+ "?station=" + station 
-			+ "&episode_id=" + episode_id 
+			/* + "?station=" + station */ 
+			+ "?episode_id=" + episode_id 
 		    + "&uid=" + uid;
 	}
 	
 	private String getHoldStationInfo() {
-		return "station=" + station 
-			+ " episode_id=" + episode_id
+		return /* "station=" + station + */ 
+			 " episode_id=" + episode_id
 		    + " uid=" + uid;
 	}
 	
