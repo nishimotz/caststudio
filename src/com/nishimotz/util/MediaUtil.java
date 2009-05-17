@@ -46,9 +46,10 @@ public class MediaUtil {
 	}
 	
 	public static void prepareFromRSS(String rssloc, 
-			List<MediaItem> mediaItems, String uid) {
+			List<MediaItem> mediaItems, String uid, String episode_id) {
 		List<Item> rssItems = null;
 		try {
+			rssloc += "?uid=" + uid + "&episode_id=" + episode_id;
 			logger.info("Rss() " + rssloc);
 			Rss rss = new Rss(rssloc);
 			logger.info(rss.toString());
@@ -128,7 +129,7 @@ public class MediaUtil {
 				t1.setCategory(category);
 				t1.setGuid(itemGuid);
 				if (itemLink.length() > 0) {
-					t1.setupInfo(itemLink, itemGuid, uid);
+					t1.setupInfo(itemLink, itemGuid, uid, episode_id);
 				}
 				mediaItems.add(t1);
 			}
@@ -146,7 +147,7 @@ public class MediaUtil {
 			List<MediaItem> currMediaItems, 
 			List<MediaItem> newItems,
 			List<MediaItem> deletedItems,
-			String uid) {
+			String uid, String episode_id) {
 		
 		List<Item> rssItems = null;
 		try {
@@ -224,7 +225,7 @@ public class MediaUtil {
 				t1.setNewItem(true);
 				t1.setGuid(itemGuid);
 				if (itemLink.length() > 0) {
-					t1.setupInfo(itemLink, itemGuid, uid);
+					t1.setupInfo(itemLink, itemGuid, uid, episode_id);
 				}
 				currMediaItems.add(t1);
 				newItems.add(t1);

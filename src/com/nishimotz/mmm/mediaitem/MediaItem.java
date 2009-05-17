@@ -342,22 +342,23 @@ public class MediaItem implements IMediaItem {
 		return newItem;
 	}
 
-	public void saveItemInfo(String uid) {
+	public void saveItemInfo(String uid, String episode_id) {
 		String httpUrl = itemRpcUrl 
 			+ "?a=save_info" 
 			+ "&guid=" + data.getGuid() 
+			+ "&uid=" + uid
+			+ "&episode_id=" + episode_id
 			+ "&fe=" + (data.isFetched() ? "1" : "0")
 			+ "&c=" + getItemLabel()
 			+ "&t1=" + getMediaStartTime()
 			+ "&t2=" + getMediaStopTime()
 			+ "&px=" + getPosX()
 			+ "&py=" + getPosY()
-			+ "&ga=" + getGainAsDB()
-			+ "&uid=" + uid;
+			+ "&ga=" + getGainAsDB();
 		try {
-			logger.info("saveItemInfo " + httpUrl);
+			//logger.info("saveItemInfo " + httpUrl);
 			String line = Util.doHttpGet(httpUrl);
-			logger.info("data: " + line);
+			//logger.info("data: " + line);
 		} catch ( Exception e ) {
 			logger.severe(e.toString());
 		}
@@ -365,7 +366,7 @@ public class MediaItem implements IMediaItem {
 	}
 	
 	
-	public void setupInfo(String rpcUrl, String guid, String uid) {
+	public void setupInfo(String rpcUrl, String guid, String uid, String episode_id) {
 		itemRpcUrl = rpcUrl;
 
 		String url_shape = rpcUrl + "?a=get_shape" + "&guid=" + guid;
@@ -374,7 +375,8 @@ public class MediaItem implements IMediaItem {
 		String httpUrl = rpcUrl 
 			+ "?a=show_info" 
 			+ "&guid=" + guid
-			+ "&uid=" + uid;
+			+ "&uid=" + uid
+			+ "&episode_id=" + episode_id;
 		try {
 			Element root = Util.getRootElementFromUrl(httpUrl);
 			setItemLabel(Util.getIntegerByTagName(root, "color", 0));

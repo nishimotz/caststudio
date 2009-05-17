@@ -3,16 +3,10 @@
  */
 package com.nishimotz.mmm;
 
-//CastStudioData が CueSheet のインスタンスを保持する。
-//CueSheet が CueSheetData や CueSheetView のインスタンスを保持する。
-//Porter, MediaItem も同様。
-
-//mediaItems の並びはz-orderの下から上の順番である
-
-//TODO: 複数の cueSheet インスタンス
-//TODO: porter が独自に mediaItems のインスタンスを持つ？
-//TODO: porter に load の機能を持たせる？
-
+// CastStudioData has CueSheet instance.
+// CueSheet has instances of CueSheetData and CueSheetView.
+// Porter, MediaItem : same.
+// items in mediaItems are ordered as 'from bottom to top'
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,7 +102,7 @@ public class CastStudioData {
 		mediaItems.add(mi);
 	}
 
-	// 一番上は一番最後なので最後からチェックする
+	// check from last, because last item in List is drawn as top-most item.
 	public MediaItem findItemFromPosition(int x, int y) {
 		List<MediaItem> items = getMediaItems();
 		if (items == null) return null;
@@ -137,15 +131,13 @@ public class CastStudioData {
 		}
 	}
 
-	public void saveItemsInfo(String uid) {
+	public void saveItemsInfo(String uid, String episode_id) {
 		List<MediaItem> items = getMediaItems();
 		if (items == null) return;
 		synchronized (items) {
 			for (MediaItem mi : items) {
-				mi.saveItemInfo(uid);
+				mi.saveItemInfo(uid, episode_id);
 			}
 		}
-		
 	}
-
 }

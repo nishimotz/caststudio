@@ -37,8 +37,8 @@ public class CastStudio {
 
 	/**
 	 * @param args
-     * [session] -s 999 -u 201 -e 123456 -r holdStationRSS
-	 * s:station u:userid e:episode_id
+     * [session] -u 201 -e 123456 -r holdStationRSS
+	 * u:userid e:episode_id
      * [loggingMode] -g 1 
 	 */
 	public static void main(String[] args) {
@@ -175,10 +175,9 @@ public class CastStudio {
 	}
 	
 	private String getHoldStationLocation() {
-		return holdStationRSS
+		return holdStationRSS;
 			/* + "?station=" + station */ 
-			+ "?episode_id=" + episode_id 
-		    + "&uid=" + uid;
+			/* + "?episode_id=" + episode_id + "&uid=" + uid; */
 	}
 	
 	private String getHoldStationInfo() {
@@ -219,11 +218,11 @@ public class CastStudio {
 			break;
 		case LocalRSS:
 			src = localRSS;
-			MediaUtil.prepareFromRSS(src, mediaItems, uid);
+			MediaUtil.prepareFromRSS(src, mediaItems, uid, episode_id);
 			break;
 		case HoldStationRSS:
 			src = getHoldStationLocation();
-			MediaUtil.prepareFromRSS(src, mediaItems, uid);
+			MediaUtil.prepareFromRSS(src, mediaItems, uid, episode_id);
 			break;
 		}
 		view.repaintFrame();
@@ -255,7 +254,7 @@ public class CastStudio {
 			List<MediaItem> mediaItems = data.getMediaItems();
 			List<MediaItem> newItems = new ArrayList<MediaItem>();
 			List<MediaItem> deletedItems = new ArrayList<MediaItem>();
-			MediaUtil.updateFromRSS(src, mediaItems, newItems, deletedItems, uid);
+			MediaUtil.updateFromRSS(src, mediaItems, newItems, deletedItems, uid, episode_id);
 			if (newItems.size() > 0) {
 				logger.info("new items:" + newItems.size());
 				data.doLayoutPorterAtFirst(newItems);
@@ -818,7 +817,7 @@ public class CastStudio {
 
 	public void saveItemInfo() {
 		logger.info("save item colors");
-		data.saveItemsInfo(uid);
+		data.saveItemsInfo(uid, episode_id);
 	}
 
 }
