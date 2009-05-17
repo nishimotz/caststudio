@@ -137,13 +137,6 @@ public class MediaItemData {
 //		return isSticker;
 //	}
 	
-	/**
-	 * audio-location:
-	 * http://radiofly.to/mmm/files/11111/11111_101_20060211_173838_x_fin.mp3
-	 * 
-	 * shape-location:
-	 * http://radiofly.to/mmm/irusu/shape.php/11111/11111_101_20060211_173838_x_fin.mp3
-	 */
 	public void loadShapeData() {
 		if (shapeDataLoaded) {
 			logger.info("loadShapeData ... already loaded");
