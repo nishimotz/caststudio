@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.nishimotz.mmm.CastStudio;
 import com.nishimotz.mmm.mediaitem.MediaItem;
 import com.nishimotz.mmm.sheet.AbstractSheet;
 
@@ -103,11 +104,13 @@ public class Porter extends AbstractSheet {
 	   	List<MediaItem> syncMediaItems = Collections.synchronizedList(mediaItems);
 	   	synchronized (syncMediaItems) {
 			for (MediaItem item : syncMediaItems) {
-				item.setPos(x, y);
-				y += item.getHeight();
-				if (y > height) {
-					y = startY + marginY;
-					x += item.getWidth();
+				if (item.isPosUndef()) {
+					item.setPos(x, y);
+					y += item.getHeight();
+					if (y > height) {
+						y = startY + marginY;
+						x += item.getWidth();
+					}
 				}
 			}
 	   	}

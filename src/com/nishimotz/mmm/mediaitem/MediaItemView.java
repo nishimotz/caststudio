@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import com.nishimotz.mmm.CastStudio;
 import com.nishimotz.util.DrawUtil;
 import com.nishimotz.util.Messages;
 import com.nishimotz.util.StringUtil;
@@ -21,8 +22,8 @@ public class MediaItemView implements IMediaItemView {
 	
 	private int width = 140;
 	private int height = 50;
-	private int posX = -1;
-	private int posY = -1;
+	private int posX = CastStudio.NOT_A_POS;
+	private int posY = CastStudio.NOT_A_POS;
 	
 	// MediaItem ç∂è„Ç©ÇÁ range ç∂è„Ç÷
 	private int rangeOffsetX = 10;

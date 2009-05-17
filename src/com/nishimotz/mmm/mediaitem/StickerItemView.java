@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import com.nishimotz.mmm.CastStudio;
 import com.nishimotz.util.DrawUtil;
 import com.nishimotz.util.Messages;
 
@@ -17,8 +18,8 @@ public class StickerItemView implements IMediaItemView {
 	
 	private int width = 125;
 	private int height = 30;
-	private int posX = 0;
-	private int posY = 0;
+	private int posX = CastStudio.NOT_A_POS;
+	private int posY = CastStudio.NOT_A_POS;
 	
 	// draw
 	private int itemShadowDepth = 4;

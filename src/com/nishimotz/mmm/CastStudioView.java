@@ -3,10 +3,8 @@
  */
 package com.nishimotz.mmm;
 
-//TODO: メニューの階層化??
-//TODO: popup menu イベントもキューで管理する
+// TODO: manage popup menu event using queue
 
-//import java.awt.Frame;
 import java.awt.Cursor;
 import java.awt.MenuItem;
 import java.awt.PopupMenu;
@@ -14,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-//import com.nishimotz.util.MediaItemEditor;
 
 public class CastStudioView {
 
@@ -99,7 +95,7 @@ public class CastStudioView {
 		});
 		
 		// popup menu
-		popupMenu = new PopupMenu("CastStudio"); // この文字列は表示されない
+		popupMenu = new PopupMenu("CastStudio"); // this string is not displayed
 		
 		MenuItem saveColorPopItem = popupMenu.add(new MenuItem("Save Info"));
 		saveColorPopItem.addActionListener(new ActionListener() {

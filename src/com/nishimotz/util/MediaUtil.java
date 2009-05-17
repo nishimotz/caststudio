@@ -151,6 +151,7 @@ public class MediaUtil {
 		
 		List<Item> rssItems = null;
 		try {
+			rssloc += "?uid=" + uid + "&episode_id=" + episode_id;
 			Rss rss = new Rss(rssloc);
 			logger.info("channel: " + rss.getChannel_Title()); 
 			Channel ch = rss.getChannel();

@@ -378,6 +378,7 @@ public class MediaItem implements IMediaItem {
 			+ "&uid=" + uid
 			+ "&episode_id=" + episode_id;
 		try {
+			logger.info("setupInfo " + httpUrl);
 			Element root = Util.getRootElementFromUrl(httpUrl);
 			setItemLabel(Util.getIntegerByTagName(root, "color", 0));
 			int x = Util.getIntegerByTagName(root, "posX", getPosX());
@@ -400,6 +401,11 @@ public class MediaItem implements IMediaItem {
 
 	public void setGuid(String itemGuid) {
 		data.setGuid(itemGuid);
+	}
+
+	public boolean isPosUndef() {
+		if (this.getView().getPosX() == CastStudio.NOT_A_POS) return true;
+		return false;
 	}
 
 }

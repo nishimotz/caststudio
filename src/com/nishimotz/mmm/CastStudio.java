@@ -50,7 +50,7 @@ public class CastStudio {
 	
 	private static String appTitle;
 	private static final long serialVersionUID = 1L;
-	private static final int NOT_A_POS = -1;
+	public static final int NOT_A_POS = -1;
 
 	private final String defaultRSS = "http://radiofly.to/mmm/irusu/rss.php";
 
@@ -64,10 +64,10 @@ public class CastStudio {
 	private String localDirectory = "c:/recordings/2005-11/xxx051113";
 	private String localRSS = "files.xml";
 	private String holdStationRSS = "http://server/caststudio/index.rss";
-	private String station = "11111";
+	// private String station = "11111";
 	private String uid = "101";
 	private String episode_id = "996332877";
-//	private int rssmode = 0;
+	// private int rssmode = 0;
 	
 	private int loggingMode = 0;
 	
@@ -132,10 +132,9 @@ public class CastStudio {
 		localDirectory    = Messages.getString("LocalDirectory");
 		localRSS          = Messages.getString("LocalRSS");
 		holdStationRSS    = Messages.getString("HoldStationRSS", defaultRSS);
-		station = Messages.getString("station");
+		// station = Messages.getString("station");
 		uid     = Messages.getString("uid");
 		episode_id     = Messages.getString("episode_id");
-//		rssmode = Messages.getAsInteger("rssmode", 0);
 	}
 	
 	
@@ -143,7 +142,7 @@ public class CastStudio {
 	 * override property values by args
 	 */
 	public void parseArgs(String[] args) {
-		Getopt g = new Getopt("", args, "g:r:s:u:e:");
+		Getopt g = new Getopt("", args, "g:r:u:e:");
 		int c;
 		while ((c = g.getopt()) != -1){
 			switch (c)	{
@@ -153,9 +152,9 @@ public class CastStudio {
 			case 'r':
 				holdStationRSS = g.getOptarg();
 				break;
-			case 's':
-				station = g.getOptarg();
-				break;
+			//case 's':
+			//	station = g.getOptarg();
+			//	break;
 			case 'u':
 				uid = g.getOptarg();
 				break;
