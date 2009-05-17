@@ -1,5 +1,5 @@
 /*
- * $Id: MediaUtil.java,v 1.1 2009/04/10 09:23:14 nishi Exp $
+ * $Id: MediaUtil.java,v 1.2 2009/05/11 01:27:35 nishi Exp $
  */
 // TODO: loadAll : mediaItems データモデルを独立クラス化して、そのメソッドに？
 
