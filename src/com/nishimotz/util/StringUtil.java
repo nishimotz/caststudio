@@ -11,10 +11,10 @@ import java.util.StringTokenizer;
 public class StringUtil {
 
     /**
-     * •¶š—ñ‚Ì•ªŠ„i‹æØ‚è•¶šw’èj
-     * @param str ‘ÎÛ•¶š—ñ
-     * @param delim ‹æØ‚è•¶š—ñ
-     * @return •ªŠ„Œã‚Ì•¶š—ñ
+     * æ–‡å­—åˆ—ã®åˆ†å‰²ï¼ˆåŒºåˆ‡ã‚Šæ–‡å­—æŒ‡å®šï¼‰
+     * @param str å¯¾è±¡æ–‡å­—åˆ—
+     * @param delim åŒºåˆ‡ã‚Šæ–‡å­—åˆ—
+     * @return åˆ†å‰²å¾Œã®æ–‡å­—åˆ—
      */
 	public static String[] split(String str, String delim) {
 		StringTokenizer st = new StringTokenizer(str, delim);
@@ -29,7 +29,7 @@ public class StringUtil {
 //	private static DecimalFormat formatter1 = new DecimalFormat("00");
 //	private static DecimalFormat formatter2 = new DecimalFormat("00"); // 00.0
 
-	// TODO: test ‚ğ‘‚­
+	// TODO: test ã‚’æ›¸ã
     public static String formatTime(double d)
     {
     	double min = Math.floor(d / 60.0);

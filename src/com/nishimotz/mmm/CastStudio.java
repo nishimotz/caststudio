@@ -368,9 +368,9 @@ public class CastStudio {
 	
 	
 	/**
-	 * offerEvent(CastStudioEvent ev) ‚É‚æ‚Á‚Ä
+	 * offerEvent(CastStudioEvent ev) ã«ã‚ˆã£ã¦
 	 * eventDispatcherThread.interrupt();
-	 * ‚ªÀs‚³‚ê‚ÄŠ„‚è‚Ü‚ê‚é
+	 * ãŒå®Ÿè¡Œã•ã‚Œã¦å‰²ã‚Šè¾¼ã¾ã‚Œã‚‹
 	 */
 	class EventDispatcher implements Runnable {
 		
@@ -447,7 +447,7 @@ public class CastStudio {
 			}
 		}
 
-		// ã‚©‚ç‡‚ÉƒCƒxƒ“ƒg‚ğó—‚·‚éƒIƒuƒWƒFƒNƒg‚ğ’T‚·
+		// ä¸Šã‹ã‚‰é †ã«ã‚¤ãƒ™ãƒ³ãƒˆã‚’å—ç†ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¢ã™
 		public void mousePressed(MouseEvent e) { 
 			if (getMediaItems() == null) return;
 			int x = e.getX();
@@ -534,7 +534,7 @@ public class CastStudio {
 			return getInspector().isInsideProperty(x, y);
 		}
 
-		// ‚Ç‚ê‚©‚ÌƒV[ƒg‚É’†“r”¼’[‚Éˆø‚Á‚©‚©‚Á‚Ä‚¢‚é
+		// ã©ã‚Œã‹ã®ã‚·ãƒ¼ãƒˆã«ä¸­é€”åŠç«¯ã«å¼•ã£ã‹ã‹ã£ã¦ã„ã‚‹
 		private boolean isHalfMast(MediaItem mi) {
 			if (getCueSheet(0).isHalfMast(mi)
 					|| getCueSheet(1).isHalfMast(mi)
@@ -544,7 +544,7 @@ public class CastStudio {
 			return false;
 		}
 		
-		// mi ‚ª‚Ç‚Ì Sheet ‚Éæ‚Á‚©‚Á‚Ä‚¢‚é‚©
+		// mi ãŒã©ã® Sheet ã«ä¹—ã£ã‹ã£ã¦ã„ã‚‹ã‹
 		private ITEM_STATUS checkState(MediaItem mi) {
 			if (getCueSheet(0).isInside(mi)) {
 				return ITEM_STATUS.CUESHEET0;
@@ -558,8 +558,8 @@ public class CastStudio {
 			return ITEM_STATUS.WORKSPACE;
 		}
 		
-		// MediaItem ‚ª Frame ‚ÌŠO‚É‚ ‚é
-		// TODO: frame ‚Ì resize ‚É‘Î‰‚·‚é‚±‚Æ
+		// MediaItem ãŒ Frame ã®å¤–ã«ã‚ã‚‹
+		// TODO: frame ã® resize ã«å¯¾å¿œã™ã‚‹ã“ã¨
 		private boolean isOutsideCastStudioFrame(MediaItem mi) {
 			int newX = mi.getPosX();
 			int newY = mi.getPosY();
@@ -583,19 +583,19 @@ public class CastStudio {
 				setDraggingMediaItem(null);
 				ITEM_STATUS state = checkState(mi);
 
-				// ”»’è
+				// åˆ¤å®š
 				boolean succeed = true;
 				if (isHalfMast(mi) || isOutsideCastStudioFrame(mi)) {
-					// ’†“r”¼’[‚ÈˆÊ’u‚¾‚ÆˆÚ“®¸”s
+					// ä¸­é€”åŠç«¯ãªä½ç½®ã ã¨ç§»å‹•å¤±æ•—
 					succeed = false;
 				} else {
-					// inspector ‚É“ü‚é‚Ì‚Í‚P‚Â‚¾‚¯
+					// inspector ã«å…¥ã‚‹ã®ã¯ï¼‘ã¤ã ã‘
 					if (originalItemStatus != ITEM_STATUS.INSPECTOR 
 							&& state == ITEM_STATUS.INSPECTOR
 							&& !getInspector().isEmpty()) {
 						succeed = false;
 					} 
-//					// ƒ|[ƒ^[‚©‚çsticker ‚ğæ‚èo‚·‚Æ‚«‚É‚Í•¡»
+//					// ãƒãƒ¼ã‚¿ãƒ¼ã‹ã‚‰sticker ã‚’å–ã‚Šå‡ºã™ã¨ãã«ã¯è¤‡è£½
 //					if (originalItemStatus == ITEM_STATUS.PORTER
 //						&& state != ITEM_STATUS.PORTER
 //						&& mi.isSticker()) {
@@ -606,14 +606,14 @@ public class CastStudio {
 //							succeed = false;
 //						}
 //					} 
-					// CueSheet ‚É“ü‚é‚Ì‚Í loaded ‚¾‚¯
+					// CueSheet ã«å…¥ã‚‹ã®ã¯ loaded ã ã‘
 					if (state == ITEM_STATUS.CUESHEET0 && !mi.isLoaded()) {
 						succeed = false;
 					}
 					if (state == ITEM_STATUS.CUESHEET1 && !mi.isLoaded()) {
 						succeed = false;
 					}
-					// €”õ’†EÄ¶’†‚Ì Inspector 
+					// æº–å‚™ä¸­ãƒ»å†ç”Ÿä¸­ã® Inspector 
 					if (originalItemStatus == ITEM_STATUS.INSPECTOR) {
 						if (getInspector().isPreparing() 
 								|| getInspector().isPlaying()) {
@@ -624,7 +624,7 @@ public class CastStudio {
 						}
 					} 
 
-					// Ä¶’†‚ÌƒAƒCƒeƒ€‚ğæ‚èo‚·‚ÆƒLƒ…[ƒV[ƒg‚à’â~‚·‚é
+					// å†ç”Ÿä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å–ã‚Šå‡ºã™ã¨ã‚­ãƒ¥ãƒ¼ã‚·ãƒ¼ãƒˆã‚‚åœæ­¢ã™ã‚‹
 					if (getCueSheet(0).isCueSheetPlaying() 
 							&& originalItemStatus == ITEM_STATUS.CUESHEET0
 							&& state == ITEM_STATUS.WORKSPACE
@@ -643,7 +643,7 @@ public class CastStudio {
 					} 
 
 /*
-   					// Ä¶’†‚ÌƒLƒ…[ƒV[ƒg‚Ì’†‚Å‘fŞ‚ğˆÚ“®‚·‚é‚±‚Æ‚Í‹Ö~
+					// å†ç”Ÿä¸­ã®ã‚­ãƒ¥ãƒ¼ã‚·ãƒ¼ãƒˆã®ä¸­ã§ç´ æã‚’ç§»å‹•ã™ã‚‹ã“ã¨ã¯ç¦æ­¢
 					if (getCueSheet(0).isCueSheetPlaying() 
 							&& originalItemStatus == ITEM_STATUS.CUESHEET0 
 							&& state == ITEM_STATUS.CUESHEET0) {
@@ -669,10 +669,10 @@ public class CastStudio {
 */
 				}
 
-				// Œãˆ—
+				// å¾Œå‡¦ç†
 				if (succeed) {
 //					if (duplicate) {
-//						// newItem ‚Í isDuplicated ‚É‚È‚é
+//						// newItem ã¯ isDuplicated ã«ãªã‚‹
 //						int x = mi.getPosX();
 //						int y = mi.getPosY();
 //						
@@ -680,22 +680,22 @@ public class CastStudio {
 //						newItem.setPos(x, y);
 //						data.getMediaItems().add(newItem);
 //
-//						// Œ³‚Ì item ‚ÍŒ³‚ÌˆÊ’u‚É–ß‚·
+//						// å…ƒã® item ã¯å…ƒã®ä½ç½®ã«æˆ»ã™
 //						mi.setPos(originalPosX, originalPosY);
 //					}
 					
-					// ˆÚ“®¬Œ÷‚Ìˆ—
+					// ç§»å‹•æˆåŠŸã®å‡¦ç†
 					mi.setStatus(state);
-					// ˆê”ÔŒã‚ë‚ÉˆÚ“®‚·‚é
+					// ä¸€ç•ªå¾Œã‚ã«ç§»å‹•ã™ã‚‹
 					data.changeOrderToLast(mi);
 
-					// inspector ‚©‚ço‚·
+					// inspector ã‹ã‚‰å‡ºã™
 					if (originalItemStatus == ITEM_STATUS.INSPECTOR 
 							&& state != ITEM_STATUS.INSPECTOR) {
-						// Inspector ‚Ì“o˜^‰ğœ
+						// Inspector ã®ç™»éŒ²è§£é™¤
 						getInspector().unsetMediaItem(mi);
 					} 
-					// inspector ‚É“ü‚ê‚é
+					// inspector ã«å…¥ã‚Œã‚‹
 					if (originalItemStatus != ITEM_STATUS.INSPECTOR 
 							&& state == ITEM_STATUS.INSPECTOR) {
 						getInspector().setMediaItem(mi);
@@ -722,9 +722,9 @@ public class CastStudio {
 						getCueSheet(1).removeMediaItem(mi);
 					}
 				} else {
-					// ˆÚ“®‚ğƒAƒ“ƒhƒD‚·‚é
+					// ç§»å‹•ã‚’ã‚¢ãƒ³ãƒ‰ã‚¥ã™ã‚‹
 					mi.setPos(originalPosX, originalPosY);
-					// cueSheet ‚É–ß‚Á‚Ä‚¢‚­ê‡
+					// cueSheet ã«æˆ»ã£ã¦ã„ãå ´åˆ
 					getCueSheet(0).updateTotalTime(getMediaItems());
 					getCueSheet(1).updateTotalTime(getMediaItems());
 				}
@@ -791,7 +791,7 @@ public class CastStudio {
 						getInspector().resetHoverMode();
 					} else {
 				    	mi.resetHoverMode(); 
-				    	// found == null ‚Ìê‡‚Í‚·‚×‚Ä reset ‚³‚ê‚é
+						// found == null ã®å ´åˆã¯ã™ã¹ã¦ reset ã•ã‚Œã‚‹
 					}
 				} 
 				if (found == null) {

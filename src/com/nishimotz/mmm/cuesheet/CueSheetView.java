@@ -28,7 +28,7 @@ public class CueSheetView extends AbstractSheetView {
 	private final Color clockBackColor  = new Color(0x99ffffff, true);
 	private final Color clockBackColor2  = new Color(0x99cccccc, true);
 	
-	// posX, posY, width, height ÇÕ AbstractSheetView Çåpè≥
+	// posX, posY, width, height „ÅØ AbstractSheetView „ÇíÁ∂ôÊâø
 	public CueSheetView() {
 		super();
 		posX = 20;

@@ -38,11 +38,11 @@ public class StickerItemView implements IMediaItemView {
 	private final Font itemFont
 		= new Font(Messages.getString("ItemFont"), Font.BOLD, fontSize);
 	
-	// ‚Ç‚±‚ÉƒtƒH[ƒJƒX‚µ‚Ä‚¢‚é‚©
-	// ‚Ç‚±‚ğƒhƒ‰ƒbƒO‚µ‚Ä‚¢‚é‚©
+	// ã©ã“ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã—ã¦ã„ã‚‹ã‹
+	// ã©ã“ã‚’ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦ã„ã‚‹ã‹
 	private FOCUS draggingMode = FOCUS.NONE;
 	
-	// ƒNƒŠƒbƒN‚·‚é‘O‚Ì hover ó‘Ô
+	// ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹å‰ã® hover çŠ¶æ…‹
 	private FOCUS hoverMode = FOCUS.NONE;
 	
 	public StickerItemView() {
@@ -94,7 +94,7 @@ public class StickerItemView implements IMediaItemView {
 		return posY;
 	}
 
-	// MediaItemView ‚Æ“¯‚¶
+	// MediaItemView ã¨åŒã˜
 	public synchronized void drag(MediaItem mediaItem, int diffX, int diffY) {
 		if (draggingMode == FOCUS.INNER) {
 			int newX = getPosX() + diffX;
@@ -104,7 +104,7 @@ public class StickerItemView implements IMediaItemView {
 	}
 	
 	private FOCUS getDraggingMode(int x, int y) {
-    	// LEFT ‚¨‚æ‚Ñ RIGHT ‚Å‚È‚¢‚±‚Æ‚ğ”»’è‚µ‚½ã‚ÅÀs
+		// LEFT ãŠã‚ˆã³ RIGHT ã§ãªã„ã“ã¨ã‚’åˆ¤å®šã—ãŸä¸Šã§å®Ÿè¡Œ
     	int x1 = getPosX();
 		int x2 = x1 + width;
 		int y1 = getPosY();

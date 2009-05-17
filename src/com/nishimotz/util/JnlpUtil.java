@@ -50,7 +50,7 @@ public class JnlpUtil {
 			return false;
 	}
 	
-	//Webƒuƒ‰ƒEƒU‚Éurl‚ğ•\¦
+	//Webãƒ–ãƒ©ã‚¦ã‚¶ã«urlã‚’è¡¨ç¤º
 	static boolean showDocument(URL url){
 		return bs.showDocument(url);
 	}
@@ -70,7 +70,7 @@ public class JnlpUtil {
 		} catch (MalformedURLException e){
 			e.printStackTrace();
 		} catch (FileNotFoundException e){
-			//ƒtƒ@ƒCƒ‹‚ª‚È‚¯‚ê‚Î–³‹‚·‚ê‚Î‚¢‚¢B
+			//ãƒ•ã‚¡ã‚¤ãƒ«ãŒãªã‘ã‚Œã°ç„¡è¦–ã™ã‚Œã°ã„ã„ã€‚
 		} catch (IOException e){
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class JnlpUtil {
 	*//**
 	 * 
 	 * @param mufin : "hoge" "../hoge" etc.
-	 * @param maxsize : ƒoƒCƒg”
+	 * @param maxsize : ãƒã‚¤ãƒˆæ•°
 	 * @return
 	 *//*
 	static OutputStream getMuffinAsOutputStream(String mufin, long maxsize){
@@ -90,7 +90,7 @@ public class JnlpUtil {
 			try{
 				ps.delete(mufinURL);
 			} catch (NullPointerException e){
-				//‘¶İ‚µ‚È‚¢‚à‚Ì‚ğÁ‚»‚¤‚Æ‚·‚é‚Æ”­¶H
+				//å­˜åœ¨ã—ãªã„ã‚‚ã®ã‚’æ¶ˆãã†ã¨ã™ã‚‹ã¨ç™ºç”Ÿï¼Ÿ
 				e.printStackTrace();
 				System.out.println("only ignore");
 			}
@@ -119,7 +119,7 @@ public class JnlpUtil {
 				// 
 				System.out.println("file not found : ignored");
 			} catch (NullPointerException e){
-				//‘¶İ‚µ‚È‚¢‚à‚Ì‚ğÁ‚»‚¤‚Æ‚·‚é‚Æ”­¶H
+				//å­˜åœ¨ã—ãªã„ã‚‚ã®ã‚’æ¶ˆãã†ã¨ã™ã‚‹ã¨ç™ºç”Ÿï¼Ÿ
 				e.printStackTrace();
 				System.out.println("only ignore");
 			}

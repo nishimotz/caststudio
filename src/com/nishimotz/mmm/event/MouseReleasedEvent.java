@@ -1,8 +1,8 @@
 /*
- * �쐬��: 2005/12/24
+ * 作成日: 2005/12/24
  *
- * TODO ���̐������ꂽ�t�@�C���̃e���v���[�g��ύX����ɂ͎��փW�����v:
- * �E�B���h�E - �ݒ� - Java - �R�[�h�E�X�^�C�� - �R�[�h�E�e���v���[�g
+ * TODO この生成されたファイルのテンプレートを変更するには次へジャンプ:
+ * ウィンドウ - 設定 - Java - コード・スタイル - コード・テンプレート
  */
 package com.nishimotz.mmm.event;
 

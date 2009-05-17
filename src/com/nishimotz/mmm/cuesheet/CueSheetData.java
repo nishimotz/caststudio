@@ -3,7 +3,7 @@
  */
 package com.nishimotz.mmm.cuesheet;
 
-// CueSheetData ‚Í CastStudioData ‚Æ“¯‚¶ MediaItem ‚ÌQÆ‚ğ•Û‚·‚é
+// CueSheetData ã¯ CastStudioData ã¨åŒã˜ MediaItem ã®å‚ç…§ã‚’ä¿æŒã™ã‚‹
 
 import java.util.ArrayList;
 import java.util.Collections;

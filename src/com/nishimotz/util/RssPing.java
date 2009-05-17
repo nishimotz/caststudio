@@ -25,15 +25,15 @@ public class RssPing {
          this.cleanupFirst();
          this.cleanup();
     } 
-    //‘S‚Ä‚Ì•K—vî•ñ‚ğn‚ß‚ÉƒZƒbƒgƒAƒbƒv
+    //å…¨ã¦ã®å¿…è¦æƒ…å ±ã‚’å§‹ã‚ã«ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
     private void cleanupFirst(){
-         pageTitleString=new String("‚Í‚ç‚Ù‚ê‚Ğ‚ê‚Í‚ê"); // ƒTƒCƒg‚Ìƒgƒbƒvƒy[ƒW‚Ìƒ^ƒCƒgƒ‹
-         pageURLString=new String("http://harahore.hirehare/"); // ƒTƒCƒg‚Ìƒgƒbƒvƒy[ƒW‚ÌƒAƒhƒŒƒX
+         pageTitleString=new String("ã¯ã‚‰ã»ã‚Œã²ã‚Œã¯ã‚Œ"); // ã‚µã‚¤ãƒˆã®ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒˆãƒ«
+         pageURLString=new String("http://harahore.hirehare/"); // ã‚µã‚¤ãƒˆã®ãƒˆãƒƒãƒ—ãƒšãƒ¼ã‚¸ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
          rssPingString=this.makeRssString();
-         //System.setProperty("http.proxyHost",""); // proxyŒo—R‚Ìê‡ proxy ƒzƒXƒg–¼‚ğƒZƒbƒg
-         //System.setProperty("http.proxyPort",""); // proxyŒo—R‚Ìê‡ proxy ƒ|[ƒg”Ô†‚ğƒZƒbƒg
+         //System.setProperty("http.proxyHost",""); // proxyçµŒç”±ã®å ´åˆ proxy ãƒ›ã‚¹ãƒˆåã‚’ã‚»ãƒƒãƒˆ
+         //System.setProperty("http.proxyPort",""); // proxyçµŒç”±ã®å ´åˆ proxy ãƒãƒ¼ãƒˆç•ªå·ã‚’ã‚»ãƒƒãƒˆ
          
-         try { // pingóMƒT[ƒo‚ğ“o˜^
+         try { // pingå—ä¿¡ã‚µãƒ¼ãƒã‚’ç™»éŒ²
               pingURL[0]=new URL("http://ping.cocolog-nifty.com/xmlrpc");
               pingURL[1]=new URL("http://www.blogpeople.net/servlet/weblogUpdates");
               pingURL[2]=new URL("http://ping.bloggers.jp/rpc/");
@@ -115,7 +115,7 @@ public class RssPing {
     }
 
     private void updateIt(){
-         for(int i=0;i<6;i++){ // pingóMƒT[ƒo‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ
+         for(int i=0;i<6;i++){ // pingå—ä¿¡ã‚µãƒ¼ãƒã®æ•°ã ã‘ç¹°ã‚Šè¿”ã—
               cleanup();
               getConnection("POST",pingURL[i]);
               con.setRequestProperty("Content-type","text/xml");

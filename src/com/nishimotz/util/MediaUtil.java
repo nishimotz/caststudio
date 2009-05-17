@@ -1,7 +1,7 @@
 /*
  * $Id: MediaUtil.java,v 1.2 2009/05/11 01:27:35 nishi Exp $
  */
-// TODO: loadAll : mediaItems ƒf[ƒ^ƒ‚ƒfƒ‹‚ğ“Æ—§ƒNƒ‰ƒX‰»‚µ‚ÄA‚»‚Ìƒƒ\ƒbƒh‚ÉH
+// TODO: loadAll : mediaItems ãƒ‡ãƒ¼ã‚¿ãƒ¢ãƒ‡ãƒ«ã‚’ç‹¬ç«‹ã‚¯ãƒ©ã‚¹åŒ–ã—ã¦ã€ãã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ï¼Ÿ
 
 package com.nishimotz.util;
 

@@ -3,8 +3,8 @@
  */
 package com.nishimotz.mmm.porter;
 
-//TODO: ƒf[ƒ^“Ç‚İ‚İ‹@”\‚ğ CastStudio ‚©‚ç‚±‚±(or PorterData)‚ÉˆÚ“®
-//TODO: layoutMediaItem ƒy[ƒWØ‚è‘Ö‚¦ or i‚è‚İ‹@”\Hƒ^ƒuØ‚è‘Ö‚¦H
+//TODO: ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿æ©Ÿèƒ½ã‚’ CastStudio ã‹ã‚‰ã“ã“(or PorterData)ã«ç§»å‹•
+//TODO: layoutMediaItem ãƒšãƒ¼ã‚¸åˆ‡ã‚Šæ›¿ãˆ or çµã‚Šè¾¼ã¿æ©Ÿèƒ½ï¼Ÿã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆï¼Ÿ
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,9 +26,9 @@ public class Porter extends AbstractSheet {
 		
 	}
 
-	// TODO: ƒSƒ~” ‚Ìê‡‚Í”z’u‚Ì step ‚ğ‹l‚ß‚é
-	// TODO: ‚Í‚İo‚µ‚½‚ç??
-	// Œ»ó‚Å‚ÍÅIˆÊ’u‚É‚º‚ñ‚Ô’u‚­
+	// TODO: ã‚´ãƒŸç®±ã®å ´åˆã¯é…ç½®ã® step ã‚’è©°ã‚ã‚‹
+	// TODO: ã¯ã¿å‡ºã—ãŸã‚‰??
+	// ç¾çŠ¶ã§ã¯æœ€çµ‚ä½ç½®ã«ãœã‚“ã¶ç½®ã
 	public void doLayoutMediaItemsAtFirst(List<MediaItem> mediaItems) {
 		int startX = view.getPosX();
 		int startY = view.getPosY();

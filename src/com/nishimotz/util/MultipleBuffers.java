@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class MultipleBuffers {
 	
 	/**
-	 * TODO: class method ‚É‚µ‚ÄAinit / iteration / finalize ‚É•ªŠ„B 
+	 * TODO: class method ã«ã—ã¦ã€init / iteration / finalize ã«åˆ†å‰²ã€‚ 
 	 */
 	public static void main(String[] args) {
 		GraphicsEnvironment graphicsEnvironment =

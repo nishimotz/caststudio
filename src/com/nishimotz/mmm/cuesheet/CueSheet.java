@@ -4,12 +4,12 @@
 
 package com.nishimotz.mmm.cuesheet;
 
-//TODO: fade-in/fade-out‘€ì
-//TODO: sheet –{‘Ì‚Æ clock ‚ÌÀ‘•‚Ì•ª—£?
-//TODO: •¡”‚ÌƒLƒ…[ƒV[ƒg‚Ìƒf[ƒ^ƒ‚ƒfƒ‹‚ğØ‚è‘Ö‚¦‚Å‚«‚é?
-//TODO: ƒLƒ…[ƒV[ƒg‚Ì•ªŠ„HŠK‘w‰»A“ü‚êq‚É‚·‚éH
+//TODO: fade-in/fade-outæ“ä½œ
+//TODO: sheet æœ¬ä½“ã¨ clock ã®å®Ÿè£…ã®åˆ†é›¢?
+//TODO: è¤‡æ•°ã®ã‚­ãƒ¥ãƒ¼ã‚·ãƒ¼ãƒˆã®ãƒ‡ãƒ¼ã‚¿ãƒ¢ãƒ‡ãƒ«ã‚’åˆ‡ã‚Šæ›¿ãˆã§ãã‚‹?
+//TODO: ã‚­ãƒ¥ãƒ¼ã‚·ãƒ¼ãƒˆã®åˆ†å‰²ï¼Ÿéšå±¤åŒ–ã€å…¥ã‚Œå­ã«ã™ã‚‹ï¼Ÿ
 
-// CueSheetData “à‚Ì MediaItem ‚Ì•`‰æ‚Í CastStudio ‚ªs‚Á‚Ä‚¢‚é
+// CueSheetData å†…ã® MediaItem ã®æç”»ã¯ CastStudio ãŒè¡Œã£ã¦ã„ã‚‹
 
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -86,10 +86,10 @@ public class CueSheet extends AbstractSheet {
 		return data.getMediaItems().get(n);
 	}
 	
-	// YÀ•W‚Åƒ\[ƒg‚µ‚Ä Play List ‚ğì‚é
+	// Yåº§æ¨™ã§ã‚½ãƒ¼ãƒˆã—ã¦ Play List ã‚’ä½œã‚‹
 	public synchronized void updateTotalTime(List<MediaItem> castStudioMediaItems) {
 		if (isMediaItemsNull()) return;
-		// Iterator ‚Ì“¯Šú‰»
+		// Iterator ã®åŒæœŸåŒ–
 		synchronized (castStudioMediaItems) {
 			totalDuration = 0.0;
 			// mediaItems.clear();
@@ -145,7 +145,7 @@ public class CueSheet extends AbstractSheet {
     }
     
 
-    // syncStart ‚ğ‚©‚¯‚é
+    // syncStart ã‚’ã‹ã‘ã‚‹
 	private synchronized void playCueSheet() {
 		if (! isCueSheetPlaying()) {
 			setCueSheetPlaying(true);
@@ -156,7 +156,7 @@ public class CueSheet extends AbstractSheet {
 		    for (int size = sizeMediaItems(), i = 0; i < size; i++) {
 		    	MediaItem mi = getMediaItem(i);
 	    		double duration = mi.getMediaDuration();
-	    		mediaItemQueue.offer(mi); // ‰Â”\‚Èê‡A—v‘f‚ğƒLƒ…[‚É‘}“ü
+				mediaItemQueue.offer(mi); // å¯èƒ½ãªå ´åˆã€è¦ç´ ã‚’ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥
 				start += duration;
 				totalDuration += duration;
 		    }
@@ -267,7 +267,7 @@ public class CueSheet extends AbstractSheet {
 	    for (int size = sizeMediaItems(), i = 0; i < size; i++) {
 	    	MediaItem mi = getMediaItem(i);
     		double duration = mi.getMediaDuration();
-    		mediaItemQueue.offer(mi); // ‰Â”\‚Èê‡A—v‘f‚ğƒLƒ…[‚É‘}“ü
+			mediaItemQueue.offer(mi); // å¯èƒ½ãªå ´åˆã€è¦ç´ ã‚’ã‚­ãƒ¥ãƒ¼ã«æŒ¿å…¥
 			start += duration;
 			totalDuration += duration;
 	    }
@@ -293,7 +293,7 @@ public class CueSheet extends AbstractSheet {
 			
 			// play next item
 			if (currMediaItem == null) {
-				currMediaItem = mediaItemQueue.poll(); // ƒLƒ…[‚Ìæ“ª‚ğæ“¾‚¨‚æ‚Ñíœ
+				currMediaItem = mediaItemQueue.poll(); // ã‚­ãƒ¥ãƒ¼ã®å…ˆé ­ã‚’å–å¾—ãŠã‚ˆã³å‰Šé™¤
 				if (currMediaItem != null) {
 					currMediaItemFinishTime = 
 						currentCueSheetTime + currMediaItem.getMediaDuration();
@@ -354,7 +354,7 @@ public class CueSheet extends AbstractSheet {
 					}
 				}
 			} else {
-				// ‘}“ü¸”s‚É‚·‚é‚×‚«H
+				// æŒ¿å…¥å¤±æ•—ã«ã™ã‚‹ã¹ãï¼Ÿ
 			}
 		}
 	}

@@ -4,8 +4,8 @@
 
 package com.nishimotz.mmm.mediaitem;
 
-// TODO: isLoaded ‚Æ isNotReady ‚Ìˆá‚¢‚ÍH
-// TODO: notReady ‚Ìê‡‚ÌŠOŒ©‚ğ•Ï‚¦‚éH
+// TODO: isLoaded ã¨ isNotReady ã®é•ã„ã¯ï¼Ÿ
+// TODO: notReady ã®å ´åˆã®å¤–è¦‹ã‚’å¤‰ãˆã‚‹ï¼Ÿ
 
 import java.awt.Graphics;
 import java.util.logging.Logger;

@@ -22,18 +22,18 @@ public interface IMediaItemCaster {
 	public abstract boolean syncStart(double sysTime, double mstart,
 			double mstop);
 
-	// ÀÛ‚ÉÄ¶’†‚Å‚ ‚ê‚Î true
+	// å®Ÿéš›ã«å†ç”Ÿä¸­ã§ã‚ã‚Œã° true
 	public abstract boolean isCasting();
 
-	// STOPPING ó‘Ô -> Thread.run ‚Å READY ‚É‘JˆÚ‚·‚éB
-	// AWT ƒCƒxƒ“ƒgƒXƒŒƒbƒh‚©‚çŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚ÉA
-	// ƒuƒƒbƒLƒ“ƒO‚·‚é‚Æ‰æ–ÊXV‚ª’x‰„‚µ‚Ä‚µ‚Ü‚¤B
-	// ‚±‚ê‚ğ‰ñ”ğ‚·‚é‚½‚ß‚É Thread ‚Åˆ—‚·‚éB
+	// STOPPING çŠ¶æ…‹ -> Thread.run ã§ READY ã«é·ç§»ã™ã‚‹ã€‚
+	// AWT ã‚¤ãƒ™ãƒ³ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ã€
+	// ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°ã™ã‚‹ã¨ç”»é¢æ›´æ–°ãŒé…å»¶ã—ã¦ã—ã¾ã†ã€‚
+	// ã“ã‚Œã‚’å›é¿ã™ã‚‹ãŸã‚ã« Thread ã§å‡¦ç†ã™ã‚‹ã€‚
 	public abstract void stop();
 
 	public abstract double getBaseTimeInSec();
 
-	// DURATION_UNKNOWN ‚Ì‚Æ‚«‚Í‚Ç‚¤‚·‚é‚×‚«‚©HH
+	// DURATION_UNKNOWN ã®ã¨ãã¯ã©ã†ã™ã‚‹ã¹ãã‹ï¼Ÿï¼Ÿ
 	public abstract double getPlayerDuration();
 
 	public abstract boolean isPlayerStarted();

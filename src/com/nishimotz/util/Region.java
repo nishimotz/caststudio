@@ -3,7 +3,7 @@
  */
 package com.nishimotz.util;
 
-// TODO: ÇøÇ·ÇÒÇ∆égÇ§
+// TODO: „Å°„ÇÉ„Çì„Å®‰Ωø„ÅÜ
 
 public class Region {
 	protected int posX = 20;

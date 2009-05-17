@@ -42,7 +42,7 @@ public abstract class AbstractSheetView implements IPointableView {
 		height = h;
 	}
 
-	// ƒNƒŠƒbƒN‚³‚ê‚½‚ ‚é“_‚ª CueSheet ‚Ì’†‚É‚ ‚é‚©H
+	// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã‚ã‚‹ç‚¹ãŒ CueSheet ã®ä¸­ã«ã‚ã‚‹ã‹ï¼Ÿ
 	public boolean isInside(int x, int y) {
     	int cx1 = posX;
     	int cy1 = posY;
@@ -54,7 +54,7 @@ public abstract class AbstractSheetView implements IPointableView {
     	return false;
 	}
 	
-	// MediaItem ‚ª CueSheet ‚Ì’†‚É‚ ‚é‚©H
+	// MediaItem ãŒ CueSheet ã®ä¸­ã«ã‚ã‚‹ã‹ï¼Ÿ
 	public boolean isInside(MediaItem mi) {
     	int cx1 = posX;
     	int cy1 = posY;
@@ -71,7 +71,7 @@ public abstract class AbstractSheetView implements IPointableView {
     	return false;
 	}
 
-	// MediaItem ‚ª CueSheet ‚Æ­‚µ‚Å‚àd‚È‚Á‚Ä‚¢‚é‚©H
+	// MediaItem ãŒ CueSheet ã¨å°‘ã—ã§ã‚‚é‡ãªã£ã¦ã„ã‚‹ã‹ï¼Ÿ
 	public boolean isOverlapped(MediaItem mi) {
     	int mx1 = mi.getPosX();
     	int my1 = mi.getPosY();

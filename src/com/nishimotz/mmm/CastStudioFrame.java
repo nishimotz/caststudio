@@ -3,7 +3,7 @@
  */
 package com.nishimotz.mmm;
 
-// TODO: drawXXXX ‚ğ Drawable ƒIƒuƒWƒFƒNƒg‚ÌƒŠƒXƒg‚Æ‚µ‚ÄŠÇ—H
+// TODO: drawXXXX ã‚’ Drawable ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒªã‚¹ãƒˆã¨ã—ã¦ç®¡ç†ï¼Ÿ
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -55,13 +55,13 @@ class CastStudioFrame extends Frame {
 		runtime = Runtime.getRuntime();
 	}
     
-	// •`‰æƒƒWƒbƒN‚ÌÀ‘•
+	// æç”»ãƒ­ã‚¸ãƒƒã‚¯ã®å®Ÿè£…
     private synchronized void drawMediaItems(Graphics ct) {
     	try {
 	    	List<MediaItem> items = castStudio.getMediaItems();
 	    	if (items == null) return;
 			MediaItem draggingItem = castStudio.getDraggingMediaItem();
-	    	// Iterator ƒIƒuƒWƒFƒNƒg‚ğ“¯Šú‰»‚·‚é
+			// Iterator ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’åŒæœŸåŒ–ã™ã‚‹
 	    	synchronized (items) {
 		    	for (MediaItem mi : items) {
 		    		if (mi != draggingItem) {
@@ -181,7 +181,7 @@ class CastStudioFrame extends Frame {
     	}
 		ct.fillRect(0, 0, dim.width, dim.height);
 		
-		// ‡˜‚ªd—vB‰º‚©‚çã‚ÉŒü‚©‚Á‚Ä•`‰æ‚·‚é
+		// é †åºãŒé‡è¦ã€‚ä¸‹ã‹ã‚‰ä¸Šã«å‘ã‹ã£ã¦æç”»ã™ã‚‹
 		drawSystemInfo(ct);
 		drawRecycler(ct);
 		drawStickerHolder(ct);
@@ -191,7 +191,7 @@ class CastStudioFrame extends Frame {
         drawMediaItems(ct);
     	drawInspectorProperty(ct);
         
-        // ‰¼‘zƒoƒbƒtƒ@‚©‚ç‰æ–Ê‚É•`‰æ
+        // ä»®æƒ³ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰ç”»é¢ã«æç”»
         g.drawImage(bufferImage, 0, 0, this);
     }
 

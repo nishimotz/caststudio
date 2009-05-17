@@ -23,10 +23,10 @@
 //import com.nishimotz.util.JmfStateWaiter;
 //
 ////MEMO:
-////ƒQƒCƒ“ dB = 20 log æ”
-////‰¹—Ê‚ğ2”{‚É‚·‚é‚É‚Í +6A”¼•ª‚É‚·‚é‚É‚Í -6
-////20 log 2.0 à +6
-////20 log 0.5 à -6
+////ã‚²ã‚¤ãƒ³ dB = 20 log ä¹—æ•°
+////éŸ³é‡ã‚’2å€ã«ã™ã‚‹ã«ã¯ +6ã€åŠåˆ†ã«ã™ã‚‹ã«ã¯ -6
+////20 log 2.0 â‰’ +6
+////20 log 0.5 â‰’ -6
 //
 //public class JmfMediaItemCaster implements IMediaItemCaster {
 //
@@ -151,8 +151,8 @@
 //			logger.severe("gainControl not available");
 //		}
 //
-//		// startTime & stopTime : ”ÍˆÍw’è‚ÌŠJnAI—¹ˆÊ’u
-//		// mediaTime : Ä¶ŠJnˆÊ’u@•K‚¸‚µ‚à”ÍˆÍw’è‚Æ‚Íˆê’v‚µ‚È‚¢
+//		// startTime & stopTime : ç¯„å›²æŒ‡å®šã®é–‹å§‹ã€çµ‚äº†ä½ç½®
+//		// mediaTime : å†ç”Ÿé–‹å§‹ä½ç½®ã€€å¿…ãšã—ã‚‚ç¯„å›²æŒ‡å®šã¨ã¯ä¸€è‡´ã—ãªã„
 //		double startTime = mediaItemData.getMediaStartTime();
 //		double stopTime  = mediaItemData.getMediaStopTime();
 //		
@@ -163,7 +163,7 @@
 //		double myCurrTime = getPlayerTime();
 //		double sysCurrTime = getSystemTime();
 //		
-//		// syncStart ‚Ì‚Í player ‚Ì TimeBase 
+//		// syncStart ã®æ™‚åˆ»ã¯ player ã® TimeBase æ™‚åˆ»
 //		myStartTime = sysTime - sysCurrTime + myCurrTime;
 //		myEndTime = myStartTime + myMediaDuration;
 //		processor.syncStart(new Time(myStartTime));
@@ -192,8 +192,8 @@
 //			logger.severe("gainControl not available");
 //		}
 //
-//		// startTime & stopTime : ”ÍˆÍw’è‚ÌŠJnAI—¹ˆÊ’u
-//		// mediaTime : Ä¶ŠJnˆÊ’u@•K‚¸‚µ‚à”ÍˆÍw’è‚Æ‚Íˆê’v‚µ‚È‚¢
+//		// startTime & stopTime : ç¯„å›²æŒ‡å®šã®é–‹å§‹ã€çµ‚äº†ä½ç½®
+//		// mediaTime : å†ç”Ÿé–‹å§‹ä½ç½®ã€€å¿…ãšã—ã‚‚ç¯„å›²æŒ‡å®šã¨ã¯ä¸€è‡´ã—ãªã„
 //		double startTime = mstart; //mediaItemData.getMediaStartTime();
 //		double stopTime  = mstop; //mediaItemData.getMediaStopTime();
 //		
@@ -204,7 +204,7 @@
 //		double myCurrTime = getPlayerTime();
 //		double sysCurrTime = getSystemTime();
 //		
-//		// syncStart ‚Ì‚Í player ‚Ì TimeBase 
+//		// syncStart ã®æ™‚åˆ»ã¯ player ã® TimeBase æ™‚åˆ»
 //		myStartTime = sysTime - sysCurrTime + myCurrTime;
 //		myEndTime = myStartTime + myMediaDuration;
 //		processor.syncStart(new Time(myStartTime));
@@ -213,14 +213,14 @@
 //		return true;
 //	}
 //	
-//	// ÀÛ‚ÉÄ¶’†‚Å‚ ‚ê‚Î true
+//	// å®Ÿéš›ã«å†ç”Ÿä¸­ã§ã‚ã‚Œã° true
 //	/* (non-Javadoc)
 //	 * @see com.nishimotz.mmm.mediaitem.IMediaItemCaster#isCasting()
 //	 */
 //	public boolean isCasting() {
 //		if (status == STATUS.PLAYING) {
 //			double playerTime = getPlayerTime();
-//			playerTime += 0.3; // true ‚É‚È‚éƒ^ƒCƒ~ƒ“ƒO‚ğ‘‚ß‚É‚·‚é
+//			playerTime += 0.3; // true ã«ãªã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’æ—©ã‚ã«ã™ã‚‹
 //			if (myStartTime <= playerTime && playerTime <= myEndTime) {
 //				return true;
 //			}
@@ -228,10 +228,10 @@
 //		return false;
 //	}
 //
-//	// STOPPING ó‘Ô -> Thread.run ‚Å READY ‚É‘JˆÚ‚·‚éB
-//	// AWT ƒCƒxƒ“ƒgƒXƒŒƒbƒh‚©‚çŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚ÉA
-//	// ƒuƒƒbƒLƒ“ƒO‚·‚é‚Æ‰æ–ÊXV‚ª’x‰„‚µ‚Ä‚µ‚Ü‚¤B
-//	// ‚±‚ê‚ğ‰ñ”ğ‚·‚é‚½‚ß‚É Thread ‚Åˆ—‚·‚éB
+//	// STOPPING çŠ¶æ…‹ -> Thread.run ã§ READY ã«é·ç§»ã™ã‚‹ã€‚
+//	// AWT ã‚¤ãƒ™ãƒ³ãƒˆã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ã€
+//	// ãƒ–ãƒ­ãƒƒã‚­ãƒ³ã‚°ã™ã‚‹ã¨ç”»é¢æ›´æ–°ãŒé…å»¶ã—ã¦ã—ã¾ã†ã€‚
+//	// ã“ã‚Œã‚’å›é¿ã™ã‚‹ãŸã‚ã« Thread ã§å‡¦ç†ã™ã‚‹ã€‚
 //	/* (non-Javadoc)
 //	 * @see com.nishimotz.mmm.mediaitem.IMediaItemCaster#stop()
 //	 */
@@ -259,7 +259,7 @@
 //		return now;
 //	}
 //	
-//	// DURATION_UNKNOWN ‚Ì‚Æ‚«‚Í‚Ç‚¤‚·‚é‚×‚«‚©HH
+//	// DURATION_UNKNOWN ã®ã¨ãã¯ã©ã†ã™ã‚‹ã¹ãã‹ï¼Ÿï¼Ÿ
 //	/* (non-Javadoc)
 //	 * @see com.nishimotz.mmm.mediaitem.IMediaItemCaster#getPlayerDuration()
 //	 */

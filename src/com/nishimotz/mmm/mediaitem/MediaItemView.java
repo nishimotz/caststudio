@@ -3,8 +3,8 @@
  */
 package com.nishimotz.mmm.mediaitem;
 
-//TODO: Ä¶ˆÊ’u‚ğƒvƒƒOƒŒƒX•\¦
-//TODO: •`‰æ‚ğƒXƒP[ƒ‰ƒuƒ‹‰» -> width ‚ğŒˆ‚ß‚é‚Æ‘¼‚Ì’l‚ªŒˆ‚Ü‚é SizeManager?
+//TODO: å†ç”Ÿä½ç½®ã‚’ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹è¡¨ç¤º
+//TODO: æç”»ã‚’ã‚¹ã‚±ãƒ¼ãƒ©ãƒ–ãƒ«åŒ– -> width ã‚’æ±ºã‚ã‚‹ã¨ä»–ã®å€¤ãŒæ±ºã¾ã‚‹ SizeManager?
 
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
@@ -25,7 +25,7 @@ public class MediaItemView implements IMediaItemView {
 	private int posX = CastStudio.NOT_A_POS;
 	private int posY = CastStudio.NOT_A_POS;
 	
-	// MediaItem ¶ã‚©‚ç range ¶ã‚Ö
+	// MediaItem å·¦ä¸Šã‹ã‚‰ range å·¦ä¸Šã¸
 	private int rangeOffsetX = 10;
 	private int rangeOffsetY = 6; // 17
 	private int durationOffsetY = 45;
@@ -33,7 +33,7 @@ public class MediaItemView implements IMediaItemView {
 	private int rangeHeight = 26;
 	private int rangeWidth = width - 20;
 	
-	// range ¶ã‚©‚ç‚Ì offset
+	// range å·¦ä¸Šã‹ã‚‰ã® offset
 	private int rangeLeftOffset = 0;
 	private int rangeRightOffset = 0;
 
@@ -83,18 +83,18 @@ public class MediaItemView implements IMediaItemView {
 		= new Font(Messages.getString("ItemFont"), Font.PLAIN, fontSize);
 	
 	
-	// ‚Ç‚±‚ÉƒtƒH[ƒJƒX‚µ‚Ä‚¢‚é‚©
-	// ‚Ç‚±‚ğƒhƒ‰ƒbƒO‚µ‚Ä‚¢‚é‚©
+	// ã©ã“ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã—ã¦ã„ã‚‹ã‹
+	// ã©ã“ã‚’ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦ã„ã‚‹ã‹
 	// private enum FOCUS {NONE, INNER, RIGHT, LEFT}
 	private FOCUS draggingMode = FOCUS.NONE;
 	
-	// ƒNƒŠƒbƒN‚·‚é‘O‚Ì hover ó‘Ô
+	// ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹å‰ã® hover çŠ¶æ…‹
 	private FOCUS hoverMode = FOCUS.NONE;
 	
 	public MediaItemView() {
 		assert defaultFillColors.length  == MediaItemData.itemLabelCount;
 		assert notReadyFillColors.length == MediaItemData.itemLabelCount;
-		// ƒŒƒ“ƒWw’è‚Ì‰Šú’l
+		// ãƒ¬ãƒ³ã‚¸æŒ‡å®šã®åˆæœŸå€¤
 		rangeLeftOffset = 0;
 		rangeRightOffset = rangeWidth;
 	}
@@ -146,7 +146,7 @@ public class MediaItemView implements IMediaItemView {
 	}
 	
 	private FOCUS getDraggingMode(int x, int y) {
-    	// LEFT ‚¨‚æ‚Ñ RIGHT ‚Å‚È‚¢‚±‚Æ‚ğ”»’è‚µ‚½ã‚ÅÀs
+		// LEFT ãŠã‚ˆã³ RIGHT ã§ãªã„ã“ã¨ã‚’åˆ¤å®šã—ãŸä¸Šã§å®Ÿè¡Œ
     	int x1 = getPosX();
 		int x2 = x1 + width;
 		int y1 = getPosY();
@@ -211,11 +211,11 @@ public class MediaItemView implements IMediaItemView {
 		
 		// handle
 		
-		// ”ÍˆÍw’èƒ{ƒbƒNƒX
+		// ç¯„å›²æŒ‡å®šãƒœãƒƒã‚¯ã‚¹
 		int hx1 = getPosX() + rangeOffsetX;
 		int hy1 = getPosY() + rangeOffsetY;
 		
-		// ”ÍˆÍw’èƒ{ƒbƒNƒX
+		// ç¯„å›²æŒ‡å®šãƒœãƒƒã‚¯ã‚¹
 		int hx2 = hx1 + rangeLeftOffset;
 		int w = rangeRightOffset - rangeLeftOffset;
 		if (mediaItem.isNotReady()) {

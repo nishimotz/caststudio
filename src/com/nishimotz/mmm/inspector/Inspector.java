@@ -3,10 +3,10 @@
  */
 package com.nishimotz.mmm.inspector;
 
-// Inspector ‚Ìó‘Ô‘JˆÚF
-// ƒ†[ƒU‘€ì‚ÆƒfƒoƒCƒX‚ÌŠÖŒW‚É‚æ‚èAMediaItem ‚æ‚è‚àÚ×‚Éó‘Ô‚ğ’è‹`
+// Inspector ã®çŠ¶æ…‹é·ç§»ï¼š
+// ãƒ¦ãƒ¼ã‚¶æ“ä½œã¨ãƒ‡ãƒã‚¤ã‚¹ã®é–¢ä¿‚ã«ã‚ˆã‚Šã€MediaItem ã‚ˆã‚Šã‚‚è©³ç´°ã«çŠ¶æ…‹ã‚’å®šç¾©
 
-// TODO stateƒfƒUƒCƒ“ƒpƒ^[ƒ“‚Ì—˜—p
+// TODO stateãƒ‡ã‚¶ã‚¤ãƒ³ãƒ‘ã‚¿ãƒ¼ãƒ³ã®åˆ©ç”¨
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -119,7 +119,7 @@ public class Inspector extends AbstractSheet {
 		MediaItem mi = data.getMediaItem();
 		double startTime = mi.getMediaStartTime();
 		double stopTime = mi.getMediaStopTime();
-		// start ‚Æ stop ‚ª‹t“]‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+		// start ã¨ stop ãŒé€†è»¢ã—ãªã„ã‚ˆã†ã«ã™ã‚‹
 		if (button == MouseEvent.BUTTON1 && sec < stopTime) {
 			mi.setMediaStartTime(sec);
 		} else if (button == MouseEvent.BUTTON3 && startTime < sec) {
@@ -249,12 +249,12 @@ public class Inspector extends AbstractSheet {
 	}
 
 	public void setHoverPropertyView(int x, int y) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		
 	}
 
 	public void resetHoverPropertyView() {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		
 	}
 

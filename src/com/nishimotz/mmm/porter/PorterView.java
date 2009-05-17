@@ -3,7 +3,7 @@
  */
 package com.nishimotz.mmm.porter;
 
-//TODO: ColorManager ‚Ì“±“üH
+//TODO: ColorManager ã®å°å…¥ï¼Ÿ
 
 import java.awt.Color;
 import java.awt.Graphics;

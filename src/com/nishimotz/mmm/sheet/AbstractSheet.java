@@ -38,7 +38,7 @@ public abstract class AbstractSheet {
 		return view.isInside(mi);
 	}
 
-	// 中途半端にシートに引っかかっている
+	// 荳ｭ騾泌濠遶ｯ縺ｫ繧ｷ繝ｼ繝医↓蠑輔▲縺九°縺｣縺ｦ縺�繧�
 	public boolean isHalfMast(MediaItem mi) {
 		return isOverlapped(mi) && !isInside(mi);
 	}

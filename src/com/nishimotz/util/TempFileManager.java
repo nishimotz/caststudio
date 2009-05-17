@@ -41,7 +41,7 @@ public class TempFileManager
    *
    * @param  prefix        the prefix string used in generating the file name;
    *      must be at least three characters long
-   * @param  suffix        the suffix string to be used in generating the fileÅfs
+   * @param  suffix        the suffix string to be used in generating the file‚Äôs
    *      name; may be null, in which case the suffix ".tmp" will be used
    * @return               an abstract pathname denoting a newly created empty
    *      file

@@ -3,9 +3,9 @@
  */
 package com.nishimotz.mmm.inspector;
 
-//TODO: ColorManager ‚Ì“±“üH
-//TODO: ”gŒ`•`‰æ‚Ìƒƒ\ƒbƒh“Æ—§
-//TODO: nI’[‚ÌŠg‘åAƒgƒŠƒ~ƒ“ƒO‹@”\
+//TODO: ColorManager ã®å°å…¥ï¼Ÿ
+//TODO: æ³¢å½¢æç”»ã®ãƒ¡ã‚½ãƒƒãƒ‰ç‹¬ç«‹
+//TODO: å§‹çµ‚ç«¯ã®æ‹¡å¤§ã€ãƒˆãƒªãƒŸãƒ³ã‚°æ©Ÿèƒ½
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -79,41 +79,41 @@ public class WaveView extends AbstractSheetView {
 		int cy = infoFontSize + 4;
         ct.drawString(msg, posX + cx , posY + cy);
 
-        // ”gŒ`‚ğ•`‚­
+        // æ³¢å½¢ã‚’æã
         int wavePosX = posX + waveAreaOffsetX;
         int wavePosY = posY + waveAreaOffsetY;
         int waveWidth = width - waveAreaWidthDiff;
         int waveHeight = height - waveAreaHeightDiff;
 		
-		// •b‚©‚çƒsƒNƒZƒ‹ˆÊ’u‚Ö‚Ì•ÏŠ· pixelPos = sec * scaleX2
+		// ç§’ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ä½ç½®ã¸ã®å¤‰æ› pixelPos = sec * scaleX2
 		double scaleX2 = (double) waveWidth / maxTime;
 
-		// ”ÍˆÍw’èˆÊ’u
+		// ç¯„å›²æŒ‡å®šä½ç½®
 		int startPosX = (int)(startTime * scaleX2);
 		int selectionWidth = (int)((stopTime - startTime) * scaleX2);
         ct.setColor(selectionColor);
 		ct.fillRect(wavePosX + startPosX, wavePosY, selectionWidth, waveHeight);
 		DrawUtil.drawDimple((Graphics2D)ct,wavePosX + startPosX, wavePosY, selectionWidth, waveHeight);
 		
-		// Œ»İÄ¶’†ˆÊ’u‚Ìƒ}[ƒJ[
+		// ç¾åœ¨å†ç”Ÿä¸­ä½ç½®ã®ãƒãƒ¼ã‚«ãƒ¼
 		int currPosX = (int)(currTime * scaleX2);
         ct.setColor(currPosColor);
 		ct.fillRect(wavePosX + currPosX, wavePosY, 2, waveHeight);
 
-		// Y²‚ÌÀ•W
+		// Yè»¸ã®åº§æ¨™
 		int baseY = wavePosY + (waveHeight/2);
 
         ct.setColor(waveShapeColor);
 		ct.drawLine(wavePosX, baseY, wavePosX + waveWidth, baseY);
 		
-		// ’l‚©‚çƒsƒNƒZƒ‹ˆÊ’u‚Ö‚Ì•ÏŠ·
+		// å€¤ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ä½ç½®ã¸ã®å¤‰æ›
 		double scaleY = (double) waveHeight / 65536.0;
 	
-		// ”÷–­‚ÉƒsƒNƒZƒ‹‚ªd‚È‚é‚±‚Æ‚ª‚ ‚é‚Ì‚Å“§–¾“x‚P‚É‚µ‚È‚¢‚Æ‰˜‚­‚È‚é
+		// å¾®å¦™ã«ãƒ”ã‚¯ã‚»ãƒ«ãŒé‡ãªã‚‹ã“ã¨ãŒã‚ã‚‹ã®ã§é€æ˜åº¦ï¼‘ã«ã—ãªã„ã¨æ±šããªã‚‹
 		ct2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 		if (waveWidth <= shapeDataCount) {
 			double scaleX = (double) shapeDataCount / waveWidth;
-			// •`‰æƒsƒNƒZƒ‹‚É‡‚í‚¹‚Äƒ‹[ƒv‚ğ‰ñ‚·
+			// æç”»ãƒ”ã‚¯ã‚»ãƒ«ã«åˆã‚ã›ã¦ãƒ«ãƒ¼ãƒ—ã‚’å›ã™
 			for (int i = 0; i < waveWidth; i++) {
 				int samplePos1 = (int)(scaleX * i);
 				int samplePos2 = (int)(scaleX * (i+1));
@@ -136,7 +136,7 @@ public class WaveView extends AbstractSheetView {
 			}
 		} else {
 			double scaleX = (double) waveWidth / shapeDataCount;
-			// ƒf[ƒ^‚É‡‚í‚¹‚Äƒ‹[ƒv‚ğ‰ñ‚·
+			// ãƒ‡ãƒ¼ã‚¿ã«åˆã‚ã›ã¦ãƒ«ãƒ¼ãƒ—ã‚’å›ã™
 			int prevX = wavePosX;
 			for (int i = 0; i < shapeDataCount; i++) {
 				short sampleMin = mi.getShapeDataMin(i);

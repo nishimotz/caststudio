@@ -1,10 +1,10 @@
 /*
- * ì¬“ú: 2005/12/24
+ * ä½œæˆæ—¥: 2005/12/24
  */
 package com.nishimotz.mmm;
 
-// TODO: offerEvent ƒVƒOƒjƒ`ƒƒ‚ğ‚Â Offerable Interface‚ğ’è‹`‚µA
-// CastStudio ‚ğ Offerable ‚É’u‚«Š·‚¦‚ê‚Îˆê”Ê“I‚ÈƒƒJƒjƒYƒ€‚É‚È‚éH
+// TODO: offerEvent ã‚·ã‚°ãƒ‹ãƒãƒ£ã‚’æŒã¤ Offerable Interfaceã‚’å®šç¾©ã—ã€
+// CastStudio ã‚’ Offerable ã«ç½®ãæ›ãˆã‚Œã°ä¸€èˆ¬çš„ãªãƒ¡ã‚«ãƒ‹ã‚ºãƒ ã«ãªã‚‹ï¼Ÿ
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
