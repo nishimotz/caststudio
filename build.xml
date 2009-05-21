@@ -1,5 +1,5 @@
 <!--
-# $Id: build.xml,v 1.1 2009/04/10 09:23:14 nishi Exp $
+# $Id: build.xml,v 1.2 2009/05/18 01:30:28 nishi Exp $
   -->
 <project name="caststudio" default="jar">
   <property name="src" value="./src"/>

@@ -1,5 +1,5 @@
 /*
- * $Id: TempFileManager.java,v 1.1 2009/04/10 09:23:14 nishi Exp $
+ * $Id: TempFileManager.java,v 1.2 2009/05/18 01:30:28 nishi Exp $
  * http://japan.internet.com/developer/20051011/print26.html
  */
 package com.nishimotz.util;
