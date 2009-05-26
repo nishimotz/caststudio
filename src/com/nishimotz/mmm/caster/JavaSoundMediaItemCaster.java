@@ -81,7 +81,8 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 	public boolean isCasting() {
 		if (status == STATUS.PLAYING) {
 			double playerTime = getPlayerTime();
-			playerTime += 0.3; // make earlier the time it becames true
+			playerTime += 0.1; // make earlier the time it becames true
+			// logger.info("myStartTime, playerTime, myEndTime=" + myStartTime + ", " + playerTime + ", " + myEndTime);
 			if (myStartTime <= playerTime && playerTime <= myEndTime) {
 				return true;
 			}
@@ -149,7 +150,7 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 				e.printStackTrace();
 			}
         }
-        status = STATUS.READY;
+		setStatus(STATUS.READY); //status = STATUS.READY;
 		return true;
 	}
 
@@ -167,13 +168,13 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 	@Override
 	public void stop() {
         active = false;
-        status = STATUS.READY;
+		setStatus(STATUS.READY); //status = STATUS.READY;
 	}
 
     @Override
 	public boolean syncStart(double sysTime) {
 		logger.info("syncStart(1) " + sysTime );
-		status = STATUS.PLAYING;
+		setStatus(STATUS.PLAYING); //status = STATUS.PLAYING;
 		startedBaseTime = getBaseTimeInSec();
 		Thread th = new Thread(new Runnable() {
 			public void run() {
@@ -220,6 +221,8 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 		            		endPos = outputBuffer.size();
 		            	}
 		            	currPos = startPos;
+		            	//
+		            	myEndTime = myStartTime + (mediaStopTime - mediaStartTime);
 		            }
 	            	logger.info("pos " + startPos + " " + endPos);
 		            int maxWriteSize = 256;
@@ -286,7 +289,7 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 		        isCastDone = true;
 		        active = false;
 				startedBaseTime = 0.0;
-				status = STATUS.READY;
+				setStatus(STATUS.READY); //status = STATUS.READY;
 			}
 		});
 		th.start();
@@ -303,5 +306,10 @@ public class JavaSoundMediaItemCaster implements IMediaItemCaster {
 	@Override
 	public void unload() {
 		// FIXME
+	}
+	
+	private void setStatus(STATUS s) {
+		// logger.info("setStatus " + s.toString());
+		status = s;
 	}
 }

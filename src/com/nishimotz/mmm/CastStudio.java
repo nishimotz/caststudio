@@ -173,11 +173,11 @@ public class CastStudio {
 		}
 	}
 	
-	private String getHoldStationLocation() {
-		return holdStationRSS;
-			/* + "?station=" + station */ 
-			/* + "?episode_id=" + episode_id + "&uid=" + uid; */
-	}
+//	private String getHoldStationLocation() {
+//		return holdStationRSS;
+//			/* + "?station=" + station */ 
+//			/* + "?episode_id=" + episode_id + "&uid=" + uid; */
+//	}
 	
 	private String getHoldStationInfo() {
 		return /* "station=" + station + */ 
@@ -198,7 +198,7 @@ public class CastStudio {
 			info = "LocalRSS=" + src;
 			break;
 		case HoldStationRSS:
-			src = getHoldStationLocation();
+			src = holdStationRSS; //getHoldStationLocation();
 			info = getHoldStationInfo();
 			break;
 		}
@@ -220,7 +220,7 @@ public class CastStudio {
 			MediaUtil.prepareFromRSS(src, mediaItems, uid, episode_id);
 			break;
 		case HoldStationRSS:
-			src = getHoldStationLocation();
+			src = holdStationRSS; // getHoldStationLocation();
 			MediaUtil.prepareFromRSS(src, mediaItems, uid, episode_id);
 			break;
 		}
@@ -249,7 +249,7 @@ public class CastStudio {
 		if (sourceMode == SOURCE_MODE.HoldStationRSS) {
 			String src;
 			src = holdStationRSS;
-			src = getHoldStationLocation();
+			// src = getHoldStationLocation();
 			List<MediaItem> mediaItems = data.getMediaItems();
 			List<MediaItem> newItems = new ArrayList<MediaItem>();
 			List<MediaItem> deletedItems = new ArrayList<MediaItem>();
