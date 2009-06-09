@@ -102,6 +102,7 @@ public class MediaItemData {
 	}
 
 	public void setMediaStopTime(double mediaStopTime) {
+		// logger.info("mediaItemData#setMediaStopTime="+mediaStopTime); 
 		this.mediaStopTime = mediaStopTime;
 	}
 

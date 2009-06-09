@@ -396,7 +396,7 @@ public class MediaItem implements IMediaItem {
 			logger.severe("setupInfo failed : " + httpUrl);
 			// e.printStackTrace();
 		}
-		logger.info("showItemInfo (done) " + httpUrl);
+		logger.info("setupInfo (done) " + httpUrl);
 	}
 
 	public void setGuid(String itemGuid) {

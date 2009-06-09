@@ -160,7 +160,13 @@ public class Inspector extends AbstractSheet {
 		new Thread() {
 			public void run() {
 				MediaItem mediaItem = data.getMediaItem();
-				if (mediaItem.load()) {
+				boolean loaded = false;
+				if (mediaItem.isLoaded()) {
+					loaded = true;
+				} else {
+					loaded = mediaItem.load();
+				}
+				if (loaded) {
 					if (status == STATUS.PREPARING_TO_PLAY) {
 						targetStatus = STATUS.PLAYING;
 					} else {

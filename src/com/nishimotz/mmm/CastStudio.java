@@ -229,7 +229,7 @@ public class CastStudio {
 		view.repaintFrame();
 		
 		for (MediaItem mi : mediaItems) {
-			if (mi.isSticker()) {
+			if (mi.isSticker() && mi.isLoaded() == false) {
 				if(!mi.load()) {
 					logger.info("load failed " + mi.toString());
 				}
